@@ -162,6 +162,7 @@ class MainWindow(HasTraits):
     Plot_2D = Button("2D plot")
     Plot_Traces = Button("Plot traces")
     multiple_plots = Button("Multiple traces/spectra on plot")
+    Normalise = Button("Normalise")
     Kinetic_Trace = Button("Kinetic trace")
     Spectra = Button("Spectra")
     Trace_Igor = Button("Send traces to Igor")
@@ -185,6 +186,7 @@ class MainWindow(HasTraits):
         Item('Shiftzero', show_label=False),
         Label('Chirp Correction'),
         Item('PlotChirp', show_label=False),
+        Label('Time range for chirp corr short/long'),
         Item('Timelim', show_label=False),
         Item('Fix_Chirp', show_label=False),
         Label('Data Analysis'),
@@ -203,6 +205,7 @@ class MainWindow(HasTraits):
         Item('Spectra', show_label=False),
         Item('Kinetic_Trace', show_label=False),
         Item('multiple_plots', show_label=False),
+        Item('Normalise', show_label=False),
         Label('Export Data'),
         Item('Save_csv', show_label=False),
         Item('Save_Glo', show_label=False),
@@ -285,7 +288,7 @@ class MainWindow(HasTraits):
         
     def _Shiftzero_fired(self):
         plt.figure()
-        plt.contourf(Data.wavelength, Data.time[0:40], Data.TrA_Data[0:40,:], 100)
+        plt.contourf(Data.wavelength, Data.time[0:20], Data.TrA_Data[0:20,:], 100)
         plt.title('Pick time zero')
         plt.xlabel('Wavelength')
         plt.ylabel('Time')
@@ -308,16 +311,10 @@ class MainWindow(HasTraits):
         index_wavelength_left=(np.abs(Data.wavelength-fittingto[0,0])).argmin()
         index_wavelength_right=(np.abs(Data.wavelength-fittingto[1,0])).argmin()
         
-        print index_wavelength_left
-        print index_wavelength_right
-        
         if index_wavelength_right <= index_wavelength_left:
             hold = index_wavelength_left
             index_wavelength_left = index_wavelength_right
             index_wavelength_right = hold
-        
-        print index_wavelength_left
-        print index_wavelength_right
         
         if index_wavelength_left == 0:
             Data.TrA_Data = Data.TrA_Data[:,index_wavelength_right:]
@@ -348,14 +345,10 @@ class MainWindow(HasTraits):
         index_time_top=(np.abs(Data.time-fittingto[1,1])).argmin()       
         index_time_bottom=(np.abs(Data.time-fittingto[0,1])).argmin()
         
-        print index_time_top, index_time_bottom
-        
         if index_time_bottom <= index_time_top:
             hold = index_time_top
             index_time_top = index_time_bottom
             index_time_bottom = hold
-        
-        print index_time_top, index_time_bottom
         
         if index_time_top == 0:
             Data.TrA_Data = Data.TrA_Data[index_time_bottom:,:]
@@ -366,10 +359,8 @@ class MainWindow(HasTraits):
             Data.time = Data.time[:index_time_top]
             
         if index_time_top != 0 & index_time_bottom != Data.time.shape:
-            print Data.TrA_Data.shape
             Data.TrA_Data = np.vstack((Data.TrA_Data[:index_time_top,:],Data.TrA_Data[index_time_bottom:,:]))
             Data.time = np.hstack((Data.time[:index_time_top],Data.time[index_time_bottom:]))
-            print Data.TrA_Data.shape
             
         self.Status = "Deleted spectra between %s and %s: %s" %(fittingto[0,1],fittingto[1,1],self.Status)
     
@@ -383,17 +374,15 @@ class MainWindow(HasTraits):
 
     def _Timelim_changed(self):
         Data.Range = self.Timelim
-        print Data.Range
                 
     def _Fix_Chirp_fired(self):
-        print Data.Range[0][0],Data.Range[0][1]
         #plot file and pick points for graphing
         plt.figure(figsize=(20,12))
         plt.title('Pick 8 points')
         plt.xlabel('Wavelength')
         plt.ylabel('Time')
         plt.contourf(Data.wavelength_C, Data.time_C, Data.Chirp, 20)
-        plt.ylim(((Data.Range[0][0]),(Data.Range[0][1])))
+        plt.ylim((int(Data.Range[0][0]),int(Data.Range[0][1])))
         polypts = np.array(ginput(8))
         plt.show()
         plt.close()
@@ -436,6 +425,7 @@ class MainWindow(HasTraits):
         plt.ylabel('Time')
         fittingto = np.array(ginput(1))
         plt.show()
+        plt.close()
         
         index_wavelength=(np.abs(Data.wavelength-fittingto[:,0])).argmin()
         Data.tracefitmodel = fitgui.fit_data(Data.time,Data.TrA_Data[:,index_wavelength],autoupdate=False,model=Convoluted_exp1,include_models='Convoluted_exp1,Convoluted_exp2,Convoluted_exp3')
@@ -443,7 +433,7 @@ class MainWindow(HasTraits):
         #If you want to have the fitting gui in another window while PyTrA remains responsive change the fit model to a model instance and use the line bellow to call it
         #Data.tracefitmodel.edit_traits()
         
-        self.Status= ('Fitted parameters at wavelength %s, %s: %s'%(fittingto[:,0], Data.tracefitmodel.pardict,self.Status))       
+        self.Status= ('Fitted parameters at wavelength %s, %s: %s'%(fittingto[:,0], Data.tracefitmodel.pardict,self.Status))
         
     def _SVD_fired(self):
         
@@ -628,7 +618,6 @@ class MainWindow(HasTraits):
         
         self.plot = self.scene.mlab.surf(yi,xi,zi, warp_scale=-np.max(Data.TrA_Data)*100000)
         self.scene.mlab.colorbar(orientation="vertical")
-        self.scene.mlab.axes(nb_labels=10,z_axis_visibility=False)
         self.scene.mlab.ylabel("wavelength (nm)")
         self.scene.mlab.xlabel("time (ps)")
     
@@ -741,6 +730,64 @@ class MainWindow(HasTraits):
         plt.ylabel('Abs.')
         plt.show()
         
+    def _Normalise_fired(self):
+        xmin, xmax = plt.xlim()
+        ymin, ymax = plt.ylim()
+        
+        index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+        index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+        
+        index_time_left=(np.abs(Data.time-ymin)).argmin()
+        index_time_right=(np.abs(Data.time-ymax)).argmin()
+        
+        indextime = int((index_time_right-index_time_left)/10)
+        
+        wavevec = np.ones([Data.wavelength[index_wavelength_left:index_wavelength_right].shape[0],10])
+        wave = np.ones([Data.wavelength[index_wavelength_left:index_wavelength_right].shape[0],10])
+        timevals = np.ones(10)
+        
+        for i in range(10):
+            wavevec[:,i] = Data.TrA_Data[(index_time_left+((i)*indextime)),index_wavelength_left:index_wavelength_right]
+            max_i = np.max(wavevec[:,i])
+            min_i = np.min(wavevec[:,i])
+            wavevec[:,i] = (wavevec[:,i]-min_i)/max_i
+            wave[:,i] = Data.wavelength[index_wavelength_left:index_wavelength_right]
+            timevals[i] = Data.time[index_time_left+((i)*indextime)]
+
+        plt.figure()
+        plt.plot(wave,wavevec)
+        plt.jet()
+        plt.legend(timevals)
+        plt.title("Normalised %s %s" %(self.title, 'Times (ps)'))
+        plt.xlabel('Wavelength (nm)')
+        plt.ylabel('Abs.')
+        plt.show()        
+    
+        indexwave = int((index_wavelength_right-index_wavelength_left)/10)
+        
+        # spectrum from every 10th spectra
+        
+        timevec = np.ones([Data.time[index_time_left:index_time_right].shape[0],10])
+        time = np.ones([Data.time[index_time_left:index_time_right].shape[0],10])
+        wavelengthvals = np.ones(10)
+        
+        for i in range(10):
+            timevec[:,i] = Data.TrA_Data[index_time_left:index_time_right,(index_wavelength_left+((i)*indexwave))]
+            max2_i = np.max(timevec[:,i])
+            min2_i = np.min(timevec[:,i])
+            timevec[:,i] = (timevec[:,i]-min2_i)/max2_i                              
+            time[:,i] = Data.time[index_time_left:index_time_right]
+            wavelengthvals[i] = Data.wavelength[index_wavelength_left+((i)*indexwave)]
+
+        plt.figure()
+        plt.plot(time,timevec)
+        plt.jet()
+        plt.legend(wavelengthvals)
+        plt.xlabel('Time (ps)')
+        plt.ylabel('Abs.')
+        plt.title("Normalised %s %s" %(self.title, 'Wavelengths (nm)'))
+        plt.show()
+    	
     def _Trace_Igor_fired(self):
         
         try:
@@ -757,7 +804,7 @@ class MainWindow(HasTraits):
             igor=win32com.client.Dispatch("IgorPro.Application")
         
             #Load into igor using LoadWave(/A=Traces/J/P=pathname) /J specifies it as a txt delimited file
-            igor.Execute('NewPath pathName, "C%s"' %(os.path.dirname(self.TrA_Raw_file)[2:].replace('\\',':')))
+            igor.Execute('NewPath pathName, "%s"' %(os.path.dirname(self.TrA_Raw_file)))
             igor.Execute('Loadwave/J/P=pathName "Traces.txt"')
             igor.Execute('Rename wave0,timeval')
         
