@@ -38,9 +38,15 @@ class Convoluted_exp3(FunctionModel1DAuto):
         d = (w/(2*np.sqrt(2*np.log(2))))
         return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + A3*1/2*np.exp(-x/T3)*np.exp((mu+(d**2)/(2*T3))/T3)*(1+special.erf((x-(mu+(d**2)/T3))/(np.sqrt(2)*d))) + y0
 
+class Convoluted_exp3(FunctionModel1DAuto):
+    def f(self,x,T1=1,T2=1,T3=1,T4=1,A1=1,A2=1,A3=1,A4=1,w=1,mu=1,y0=1,):
+        d = (w/(2*np.sqrt(2*np.log(2))))
+        return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + A3*1/2*np.exp(-x/T3)*np.exp((mu+(d**2)/(2*T3))/T3)*(1+special.erf((x-(mu+(d**2)/T3))/(np.sqrt(2)*d))) + A4*1/2*np.exp(-x/T4)*np.exp((mu+(d**2)/(2*T4))/T4)*(1+special.erf((x-(mu+(d**2)/T4))/(np.sqrt(2)*d))) + y0
+		
 register_model(Convoluted_exp1, name='Convoluted_exp1', overwrite=False)
 register_model(Convoluted_exp2, name='Convoluted_exp2', overwrite=False)
 register_model(Convoluted_exp3, name='Convoluted_exp3', overwrite=False)
+register_model(Convoluted_exp4, name='Convoluted_exp4', overwrite=False)
 
 ##--set up window--##
 
@@ -702,8 +708,9 @@ class MainWindow(HasTraits):
             wavelengthvals[i] = round(np.average(Data.wavelength[index_wavelength_left+((i)*indexwave):index_wavelength_left+((i)*indexwave)+indexwave]),1)
 
         plt.figure()
+        colormap = plt.cm.jet
+        plt.gca().set_color_cycle([colormap(i) for i in np.linspace(0, 0.9, 10)])
         plt.plot(time,timevec)
-        plt.jet()
         plt.legend(wavelengthvals)
         plt.xlabel('Time (ps)')
         plt.ylabel('Abs.')
@@ -722,8 +729,9 @@ class MainWindow(HasTraits):
             timevals[i] = round(np.average(Data.time[index_time_left+((i)*indextime):index_time_left+((i)*indextime)+indextime]),1)
 
         plt.figure()
+        colormap = plt.cm.jet
+        plt.gca().set_color_cycle([colormap(i) for i in np.linspace(0, 0.9, 10)])
         plt.plot(wave,wavevec)
-        plt.jet()
         plt.legend(timevals)
         plt.title("Averaged %s %s" %(self.title, 'Times (ps)'))
         plt.xlabel('Wavelength (nm)')
@@ -750,11 +758,13 @@ class MainWindow(HasTraits):
             wavevec[:,i] = Data.TrA_Data[(index_time_left+((i)*indextime)),index_wavelength_left:index_wavelength_right]
             max_i = np.max(wavevec[:,i])
             min_i = np.min(wavevec[:,i])
-            wavevec[:,i] = (wavevec[:,i]-min_i)/max_i
+            wavevec[:,i] = (wavevec[:,i]-min_i)/(max_i-min_i)
             wave[:,i] = Data.wavelength[index_wavelength_left:index_wavelength_right]
             timevals[i] = Data.time[index_time_left+((i)*indextime)]
 
         plt.figure()
+        colormap = plt.cm.jet
+        plt.gca().set_color_cycle([colormap(i) for i in np.linspace(0, 0.9, 10)])
         plt.plot(wave,wavevec)
         plt.jet()
         plt.legend(timevals)
@@ -775,13 +785,14 @@ class MainWindow(HasTraits):
             timevec[:,i] = Data.TrA_Data[index_time_left:index_time_right,(index_wavelength_left+((i)*indexwave))]
             max2_i = np.max(timevec[:,i])
             min2_i = np.min(timevec[:,i])
-            timevec[:,i] = (timevec[:,i]-min2_i)/max2_i                              
+            timevec[:,i] = (timevec[:,i]-min2_i)/(max2_i-min2_i)                              
             time[:,i] = Data.time[index_time_left:index_time_right]
             wavelengthvals[i] = Data.wavelength[index_wavelength_left+((i)*indexwave)]
 
         plt.figure()
+        colormap = plt.cm.jet
+        plt.gca().set_color_cycle([colormap(i) for i in np.linspace(0, 0.9, 10)])
         plt.plot(time,timevec)
-        plt.jet()
         plt.legend(wavelengthvals)
         plt.xlabel('Time (ps)')
         plt.ylabel('Abs.')
