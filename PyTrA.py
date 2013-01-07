@@ -434,7 +434,7 @@ class MainWindow(HasTraits):
         plt.close()
         
         index_wavelength=(np.abs(Data.wavelength-fittingto[:,0])).argmin()
-        Data.tracefitmodel = fitgui.fit_data(Data.time,Data.TrA_Data[:,index_wavelength],autoupdate=False,model=Convoluted_exp1,include_models='Convoluted_exp1,Convoluted_exp2,Convoluted_exp3')
+        Data.tracefitmodel = fitgui.fit_data(Data.time,Data.TrA_Data[:,index_wavelength],autoupdate=False,model=Convoluted_exp1,include_models='Convoluted_exp1,Convoluted_exp2,Convoluted_exp3,Convoluted_exp4')
         
         #If you want to have the fitting gui in another window while PyTrA remains responsive change the fit model to a model instance and use the line bellow to call it
         #Data.tracefitmodel.edit_traits()
