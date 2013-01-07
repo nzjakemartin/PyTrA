@@ -38,7 +38,7 @@ class Convoluted_exp3(FunctionModel1DAuto):
         d = (w/(2*np.sqrt(2*np.log(2))))
         return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + A3*1/2*np.exp(-x/T3)*np.exp((mu+(d**2)/(2*T3))/T3)*(1+special.erf((x-(mu+(d**2)/T3))/(np.sqrt(2)*d))) + y0
 
-class Convoluted_exp3(FunctionModel1DAuto):
+class Convoluted_exp4(FunctionModel1DAuto):
     def f(self,x,T1=1,T2=1,T3=1,T4=1,A1=1,A2=1,A3=1,A4=1,w=1,mu=1,y0=1,):
         d = (w/(2*np.sqrt(2*np.log(2))))
         return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + A3*1/2*np.exp(-x/T3)*np.exp((mu+(d**2)/(2*T3))/T3)*(1+special.erf((x-(mu+(d**2)/T3))/(np.sqrt(2)*d))) + A4*1/2*np.exp(-x/T4)*np.exp((mu+(d**2)/(2*T4))/T4)*(1+special.erf((x-(mu+(d**2)/T4))/(np.sqrt(2)*d))) + y0
