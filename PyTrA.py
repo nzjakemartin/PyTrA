@@ -601,32 +601,44 @@ class MainWindow(HasTraits):
         self.Status= '%s Traces saved from %s to %s: %s' %(Data.Traces.shape[0], fittingto[0,0], fittingto[1,0],self.Status)
 
     def _Plot_3D_fired(self):
-        
-        #Putting into gridded form
-        
-        self.scene.mlab.clf()
-        
-        x = np.linspace(Data.wavelength[0],Data.wavelength[-1],len(Data.wavelength))
-        y = np.linspace(Data.time[0], Data.time[-1],len(Data.wavelength))
-        [xi,yi] = np.meshgrid(x,y)
 
-        for i in range(len(Data.wavelength)):
-            repeating_wavelength = np.array(np.ones((len(Data.time)))*Data.wavelength[i])
-            vectors = np.array([Data.time,repeating_wavelength,Data.TrA_Data[:,i]])
-            if i==0:
-                Data.TrA_Data_gridded = vectors
-            else:
-                Data.TrA_Data_gridded = np.hstack((Data.TrA_Data_gridded, vectors))
+		xmin, xmax = plt.xlim()
+		ymin, ymax = plt.ylim()
+		
+		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+		
+		index_time_left=(np.abs(Data.time-ymin)).argmin()
+		index_time_right=(np.abs(Data.time-ymax)).argmin()
+		
+		Data.Three_d = Data.TrA_Data[index_time_left:index_time_right,index_wavelength_left:index_wavelength_right]
+		Data.Three_d_wavelength = Data.wavelength[index_wavelength_left:index_wavelength_right]
+		Data.Three_d_time = Data.time[index_time_left:index_time_right]
+		
+		self.scene.mlab.clf()
+		
+		x = np.linspace(Data.Three_d_wavelength[0],Data.Three_d_wavelength[-1],len(Data.Three_d_wavelength))
+		y = np.linspace(Data.Three_d_time[0], Data.Three_d_time[-1],len(Data.Three_d_wavelength))
+		[xi,yi] = np.meshgrid(x,y)
 
-        zi = interpolate.griddata((Data.TrA_Data_gridded[1,:],Data.TrA_Data_gridded[0,:]),Data.TrA_Data_gridded[2,:],(xi,yi), method='linear', fill_value=0)
+		for i in range(len(Data.Three_d_wavelength)):
+			repeating_wavelength = np.array(np.ones((len(Data.Three_d_time)))*Data.Three_d_wavelength[i])
+			vectors = np.array([Data.Three_d_time,repeating_wavelength,Data.Three_d[:,i]])
+			if i==0:
+				Data.TrA_Data_gridded = vectors
+			else:
+				Data.TrA_Data_gridded = np.hstack((Data.TrA_Data_gridded, vectors))
+
+		zi = interpolate.griddata((Data.TrA_Data_gridded[1,:],Data.TrA_Data_gridded[0,:]),Data.TrA_Data_gridded[2,:],(xi,yi), method='linear', fill_value=0)
         
         #Sends 3D plot to mayavi in gui
         
-        self.plot = self.scene.mlab.surf(yi,xi,zi, warp_scale=-np.max(Data.TrA_Data)*100000)
-        self.scene.mlab.colorbar(orientation="vertical")
-        self.scene.mlab.ylabel("wavelength (nm)")
-        self.scene.mlab.xlabel("time (ps)")
-    
+		self.plot = self.scene.mlab.surf(yi,xi,zi, warp_scale=-np.max(Data.Three_d)*100000)
+		self.scene.mlab.colorbar(orientation="vertical")
+		self.scene.mlab.axes(nb_labels=5)
+		self.scene.mlab.ylabel("wavelength (nm)")
+		self.scene.mlab.xlabel("time (ps)")
+		
     def _Plot_2D_fired(self):
         plt.figure()
         plt.contourf(Data.wavelength, Data.time, Data.TrA_Data, 200)
