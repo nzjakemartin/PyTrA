@@ -476,7 +476,7 @@ class MainWindow(HasTraits):
             self.log = ('%s = %s +- %s\n%s'%(results_par[i],results[i],results_error[i],self.log))
 
     def _mcmc_fired(self):
-        mcmc_app.MCMC(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
+        mcmc_app = mcmc.MCMC(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
         mcmc_app.edit_traits()
         del mcmc_app
 

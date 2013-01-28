@@ -26,16 +26,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PyTrA.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PyTrA.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PyTrA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="491" column="31" selection-start="19789" selection-end="19789" vertical-scroll-proportion="0.0">
+            <state line="479" column="30" selection-start="19487" selection-end="19487" vertical-scroll-proportion="0.22084367">
               <folding>
                 <element signature="e#15#33#0" expanded="true" />
                 <element signature="e#2858#4399#0" expanded="false" />
                 <element signature="e#4433#6038#0" expanded="false" />
-                <marker date="1359348632000" expanded="true" signature="19357:19480" placeholder="..." />
-                <marker date="1359348632000" expanded="true" signature="19532:19666" placeholder="..." />
+                <marker date="1359407768000" expanded="true" signature="19357:19487" placeholder="..." />
+                <marker date="1359407768000" expanded="true" signature="19539:19673" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -59,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Global.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Global.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Global.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="19" selection-start="448" selection-end="448" vertical-scroll-proportion="0.26923078">
+            <state line="27" column="21" selection-start="1062" selection-end="1062" vertical-scroll-proportion="-10.384615">
               <folding>
                 <element signature="e#0#117#0" expanded="true" />
                 <marker date="1359364866000" expanded="true" signature="1195:3062" placeholder="..." />
@@ -99,8 +99,8 @@
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/mcmc.py" />
         <option value="$PROJECT_DIR$/globaltesting.py" />
-        <option value="$PROJECT_DIR$/PyTrA.py" />
         <option value="$PROJECT_DIR$/Global.py" />
+        <option value="$PROJECT_DIR$/PyTrA.py" />
       </list>
     </option>
   </component>
@@ -397,19 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyTrA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="491" column="31" selection-start="19789" selection-end="19789" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#15#33#0" expanded="true" />
-            <element signature="e#2858#4399#0" expanded="false" />
-            <element signature="e#4433#6038#0" expanded="false" />
-            <marker date="1359348632000" expanded="true" signature="19357:19480" placeholder="..." />
-            <marker date="1359348632000" expanded="true" signature="19532:19666" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Global_rserve.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -424,13 +411,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Global.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="448" selection-end="448" vertical-scroll-proportion="0.26923078">
+        <state line="27" column="21" selection-start="1062" selection-end="1062" vertical-scroll-proportion="-10.384615">
           <folding>
             <element signature="e#0#117#0" expanded="true" />
             <marker date="1359364866000" expanded="true" signature="1195:3062" placeholder="..." />
             <marker date="1359364866000" expanded="true" signature="1791:2734" placeholder="..." />
             <marker date="1359364866000" expanded="true" signature="1791:2734" placeholder="..." />
             <marker date="1359364866000" expanded="true" signature="2776:3062" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PyTrA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="479" column="30" selection-start="19487" selection-end="19487" vertical-scroll-proportion="0.22084367">
+          <folding>
+            <element signature="e#15#33#0" expanded="true" />
+            <element signature="e#2858#4399#0" expanded="false" />
+            <element signature="e#4433#6038#0" expanded="false" />
+            <marker date="1359407768000" expanded="true" signature="19357:19487" placeholder="..." />
+            <marker date="1359407768000" expanded="true" signature="19539:19673" placeholder="..." />
           </folding>
         </state>
       </provider>
