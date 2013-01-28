@@ -59,15 +59,15 @@ def fittraces(initialglo):
     return avgchi2(Tx,Ty,guess,parinfo)
 
 def avgchi2(x,y,guess,parinfo):
-    chi2 = 0
+    norm = 0
     err = num_points
     for i in range(len(Ty[0,:])):
         y = Ty[:,i]
         fa = {'x':x, 'y':y, 'err':err}
         #m = mpfit('fitfunc', guess, parinfo, functkw=fa)
         m = mpfit(fitfunc2, guess, parinfo=parinfo, functkw=fa)
-        chi2 = (chi2+m.fnorm)/2
-    return np.log(chi2)
+        norm = (norm+m.fnorm)/2
+    return chi2
 
 initialglo = 19
 

@@ -40,12 +40,12 @@ class MCMC(HasTraits):
                 self.prior_dict[self.parameters[i].name]=0
 
             #Sets a Normal Distribution
-            if self.parameters[i].dist=='Normal':
-                self.prior_dict[self.parameters[i].name]=self.parameters[i].min,self.parameters[i].max
-
-            #Sets a Uniform Distribution
             if self.parameters[i].dist=='Uniform':
-                self.prior_dict[self.parameters[i].name]=self.parameters[i].min
+                self.prior_dict[self.parameters[i].name]=(self.parameters[i].min,self.parameters[i].max)
+
+            #Sets a Normal Distribution
+            if self.parameters[i].dist=='Normal':
+                self.prior_dict[self.parameters[i].name]=self.parameters[i].sig
 
         print "dictionary created"
         print self.prior_dict

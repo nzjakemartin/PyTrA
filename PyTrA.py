@@ -6,6 +6,7 @@ from pylab import ginput
 import matplotlib.pyplot as plt
 import os
 import mcmc
+import Global as glo
 from traits.api import  HasTraits, File, Button, Array, Enum, Instance, Str, List, HasPrivateTraits, Float, Int
 from traitsui.api import Group, Item, View, Label, HSplit, Tabbed, ListEditor
 from scipy import interpolate, special, linalg
@@ -163,6 +164,7 @@ class MainWindow(HasTraits):
     EFA = Button("Evolving factor analysis")
     Traces_num = 0
     Multiple_Trace = Button("Select multiple traces")
+    Global = Button("Global fit")
     title = Str("Welcome to PyTrA")
     Plot_3D = Button("3D plot")
     Plot_2D = Button("2D plot")
@@ -207,6 +209,7 @@ class MainWindow(HasTraits):
         Item('Trace_Igor', show_label=False),
         Item('Plot_Traces', show_label=False),
         Item('Clear_Traces', show_label=False),
+        Item('Global', show_label=False),
         Label('Visualisation'),
         Item('Plot_3D', show_label=False),
         Item('Plot_2D', show_label=False),
@@ -473,10 +476,15 @@ class MainWindow(HasTraits):
             self.log = ('%s = %s +- %s\n%s'%(results_par[i],results[i],results_error[i],self.log))
 
     def _mcmc_fired(self):
-        print Data.tracefitmodel.params
-        mcmc_app = mcmc.MCMC(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
+        mcmc_app.MCMC(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
         mcmc_app.edit_traits()
+        del mcmc_app
 
+
+    def _Global_fired(self):
+        global_app = glo.Global(parameters=[ glo.Params(name=i) for i in Data.tracefitmodel.params])
+        global_app.edit_traits()
+        del global_app
 
     def _SVD_fired(self):
         
