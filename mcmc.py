@@ -65,7 +65,7 @@ class Params(HasPrivateTraits):
     min = Float
     max = Float
     sig = Float
-    dist = Enum('Normal','Uniform','Poisson')
+    dist = Enum('Uniform','Normal','Poisson')
 
     view = View(
         Item('name',label='Parameter',style='readonly'),

@@ -6,30 +6,19 @@ import pymodelfit as fit
 from scipy.optimize import fmin
 import numpy as np
 
-class Fitting():
-    linked = []
-    fixed = []
-    start = np.array([])
-    fix_vals = np.array([])
 
-    def Global(self):
-        stdev = 0.0
-        print self.linked, self.fixed, self.start, self.fix_vals
-        for i in range(len(self.start)-1):
-            Data.tracefitmodel.pardict[self.linked[i]] = self.start[i]
-        for i in range(len(self.fix_vals)-1):
-            Data.tracefitmodel.pardict[self.fixed[i]] = self.fix_vals[i]
-        fix_ = self.linked
-        start = np.array(self.start)
-        print start
-        for i in range(len(Data.Traces[:,1])):
-            Data.tracefitmodel.fitData(Data.time,Data.Traces[i,:],fixedpars=fix_)
-            stdev = (Data.tracefitmodel.stdData()+stdev)/2
-        return(stdev)
-
-    def MCMC(self):
-        self.fixed = self.linked.append(self.fixed)
-        print 'Too be completed'
+def Global_chi2(start,linked,fix_vals,fixed):
+    chi2 = 0.0
+    for i in range(len(start)-1):
+        Data.tracefitmodel.pardict[linked[i]] = start[i]
+    for i in range(len(fix_vals)-1):
+        Data.tracefitmodel.pardict[fixed[i]] = fix_vals[i]
+    fix_ = linked
+    start = np.array(start)
+    for i in range(len(Data.Traces[:,1])):
+        Data.tracefitmodel.fitData(Data.time,Data.Traces[i,:],fixedpars=fix_)
+        chi2 = (Data.tracefitmodel.chi2Data()[0]+chi2)/2
+    return(chi2)
 
 
 class Global(HasTraits):
@@ -53,6 +42,7 @@ class Global(HasTraits):
         Item('max_iter'),
         Item('fit'),
         Item('sample'),
+        Item('status'),
         title   = 'Global', resizable=True,
         buttons = [ 'OK', 'Cancel' ]
     )
@@ -72,21 +62,13 @@ class Global(HasTraits):
                 self.fixed.append(self.parameters[i].name)
                 fix_vals.append(self.parameters[i].val)
 
-        loop = Fitting()
-        loop.linked=self.linked
-        loop.fixed=self.fixed
-        loop.start=start
-        loop.fix_vals=fix_vals
-
-        print loop.start
+        linked=self.linked
+        fixed=self.fixed
 
         #Use minimisation over linked parameters
         if self.sample == 'fmin':
-            xopt, fopt = fmin(loop.Global, loop.start, full_output=1)
-            self.status = xopt,fopt
-
-        print xopt, fopt
-
+            xopt = fmin(Global_chi2, start, args=(linked,fix_vals,fixed))
+        self.status = ('%s'%(xopt))
         #Use MCMC over linked parameters
         if self.sample == 'mcmc':
             loop.MCMC
