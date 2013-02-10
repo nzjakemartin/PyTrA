@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44d3d8d2-5c38-4af0-bd5d-6e1ce2805139" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\A2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\Global_rserve.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\PyTrA.bat" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\T2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\array.csv" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\b.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\globaltesting.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\mcmctest.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\mcmctesting.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\run.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\sig.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\test.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/A1.png" afterPath="$PROJECT_DIR$/A1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/T1.png" afterPath="$PROJECT_DIR$/T1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mu.png" afterPath="$PROJECT_DIR$/mu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/w.png" afterPath="$PROJECT_DIR$/w.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/y0.png" afterPath="$PROJECT_DIR$/y0.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/testrunner.xml" afterPath="$PROJECT_DIR$/.idea/testrunner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Global.py" afterPath="$PROJECT_DIR$/Global.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PyTrA.py" afterPath="$PROJECT_DIR$/PyTrA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mcmc.py" afterPath="$PROJECT_DIR$/mcmc.py" />
-    </list>
+    <list default="true" id="44d3d8d2-5c38-4af0-bd5d-6e1ce2805139" name="Default" comment="" />
     <ignored path="PyTrA.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,19 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mcmc.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="mcmc.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcmc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="45" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
+            <state line="52" column="39" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.5882353">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Global.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Global.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Global.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="2.0882354">
+            <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#117#0" expanded="true" />
               </folding>
@@ -302,7 +277,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -473,19 +448,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcmc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="45" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Global.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="2.0882354">
+        <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#117#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcmc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="39" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.5882353">
+          <folding />
         </state>
       </provider>
     </entry>
