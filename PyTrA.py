@@ -7,9 +7,8 @@ import matplotlib.pyplot as plt
 import os
 import mcmc
 import Global as glo
-from traits.api import  HasTraits, File, Button, Array, Enum, Instance, Str, List, HasPrivateTraits, Float, Int
-from traitsui.api import Group, Item, View, Label, HSplit, Tabbed, ListEditor, ArrayEditor
-from traitsui.ui_editors.array_view_editor import ArrayViewEditor
+from traits.api import  HasTraits, File, Button, Array, Enum, Instance, Str, Range
+from traitsui.api import Group, Item, View, Label, HSplit, Tabbed
 from scipy import interpolate, special, linalg
 from Data import Data
 import pymodelfit.fitgui as fitgui
@@ -167,6 +166,7 @@ class MainWindow(HasTraits):
 	Multiple_Trace = Button("Select multiple traces")
 	Global = Button("Global fit")
 	title = Str("Welcome to PyTrA")
+	z_height = Range(1,100)
 	Plot_3D = Button("3D plot")
 	Plot_2D = Button("2D plot")
 	Plot_log = Button("2D log plot")
@@ -180,13 +180,13 @@ class MainWindow(HasTraits):
 	Save_Glo = Button("Save as Glotaran file")
 	Save_csv = Button("Save csv with title as file name")
 	Save_log = Button("Save log file")
-	Clear_Traces = Button("Clear Traces")
 	Help = Button("Help")
 	log = Str
 
 	#Setting up views
 
 	buttons_group = Group(
+		Item('title', show_label=False),
 		Item('TrA_Raw_file', style = 'simple', show_label=False),
 		Item('Chirp_file', style = 'simple', show_label=False),
 		Item('Load_files', show_label=False),
@@ -210,10 +210,10 @@ class MainWindow(HasTraits):
 		Item('Multiple_Trace', show_label=False),
 		Item('Trace_Igor', show_label=False),
 		Item('Plot_Traces', show_label=False),
-		Item('Clear_Traces', show_label=False),
 		Item('Global', show_label=False),
 		Label('Visualisation'),
 		Item('Plot_3D', show_label=False),
+		Item('z_height', show_label=False),
 		Item('Plot_2D', show_label=False),
 		Item('Plot_log', show_label=False),
 		Item('Spectra', show_label=False),
@@ -310,13 +310,13 @@ class MainWindow(HasTraits):
 			Data.Chirp = Chirp_Raw[1:Chirp_Raw_m,1:Chirp_Raw_n]
 
 		except:
-			self.log=("No Chirp found\n %s"%(self.log))
+			self.log=("%s \nNo Chirp found"%(self.log))
 
-		self.log=('Data file imported of size t=%s and wavelength=%s name=%s\n %s' %(Data.TrA_Data.shape[0],Data.TrA_Data.shape[1],TrA_Raw_name,self.log))
+		self.log=('%s\nData file imported of size t=%s and wavelength=%s name=%s' %(self.log,Data.TrA_Data.shape[0],Data.TrA_Data.shape[1],TrA_Raw_name))
 
 	def _Ohioloader_fired(self):
 		ohio = OhioLoader().edit_traits()
-		self.log = ('Data file imported of size %s by %s\n %s' %(Data.TrA_Data.shape[0],Data.TrA_Data.shape[1],self.log))
+		self.log = ('%s \nData file imported of size %s by %s' %(self.log,Data.TrA_Data.shape[0],Data.TrA_Data.shape[1]))
 
 	def _fft_filter_fired(self):
 		fft_live = FFTfilter().edit_traits()
@@ -333,7 +333,7 @@ class MainWindow(HasTraits):
 
 		Data.time = Data.time-fittingto[0][1]
 
-		self.log = "Deleted traces between %s and %s\n %s" %(fittingto[0,0],fittingto[1,0],self.log)
+		self.log = "%s \nDeleted traces between %s and %s" %(self.log,fittingto[0,0],fittingto[1,0])
 
 	def _DeleteTraces_fired(self):
 		plt.figure()
@@ -366,7 +366,7 @@ class MainWindow(HasTraits):
 			Data.TrA_Data = np.hstack((Data.TrA_Data[:,:index_wavelength_left],Data.TrA_Data[:,index_wavelength_right:]))
 			Data.wavelength = np.hstack((Data.wavelength[:index_wavelength_left],Data.wavelength[index_wavelength_right:]))
 
-		self.log = "Deleted traces between %s and %s\n %s" %(fittingto[0,0],fittingto[1,0],self.log)
+		self.log = "%s \nDeleted traces between %s and %s" %(self.log,fittingto[0,0],fittingto[1,0])
 
 	def _Delete_spectra_fired(self):
 		plt.figure()
@@ -398,7 +398,7 @@ class MainWindow(HasTraits):
 			Data.TrA_Data = np.vstack((Data.TrA_Data[:index_time_top,:],Data.TrA_Data[index_time_bottom:,:]))
 			Data.time = np.hstack((Data.time[:index_time_top],Data.time[index_time_bottom:]))
 
-		self.log = "Deleted spectra between %s and %s\n %s" %(fittingto[0,1],fittingto[1,1],self.log)
+		self.log = "%s \nDeleted spectra between %s and %s" %(self.log,fittingto[0,1],fittingto[1,1])
 
 	def _PlotChirp_fired(self):
 		plt.figure()
@@ -451,7 +451,7 @@ class MainWindow(HasTraits):
 			fixed_wave = f(Data.time)
 			Data.TrA_Data[:, i] = fixed_wave
 
-		self.log = "Polynomial fit with form %s*x^2 + %s*x + %s stdev %s\n %s" %(fitcoeff[0],fitcoeff[1],fitcoeff[2],stdev,self.log)
+		self.log = "%s \nPolynomial fit with form %s*x^2 + %s*x + %s stdev %s" %(self.log,fitcoeff[0],fitcoeff[1],fitcoeff[2],stdev)
 
 	def _Fit_Trace_fired(self):
 		plt.figure()
@@ -473,31 +473,40 @@ class MainWindow(HasTraits):
 		results_par = Data.tracefitmodel.params
 		results = Data.tracefitmodel.parvals
 
-		self.log= ('Fitted parameters at wavelength %s\n Fitting parameters%s'%(fittingto[:,0],self.log))
+		self.log= ('%s \nFitted parameters at wavelength %s \nFitting parameters'%(self.log,fittingto[:,0]))
 
 		for i in range(len(results)):
-			self.log = ('%s = %s +- %s\n%s'%(results_par[i],results[i],results_error[i],self.log))
+			self.log = ('%s \n%s = %s +- %s'%(self.log,results_par[i],results[i],results_error[i]))
 
 	def _mcmc_fired(self):
 		mcmc_app = mcmc.MCMC(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
 		mcmc_app.edit_traits()
-		del mcmc_app
-
+		mcmc_app = mcmc.MCMC(parameters=[])
 
 	def _Global_fired(self):
 		global_app = glo.Global(parameters=[ glo.Params(name=i) for i in Data.tracefitmodel.params])
 		global_app.edit_traits()
+		global_app = glo.Global(parameters=[])
 
 	def _SVD_fired(self):
 
-		xmin, xmax = plt.xlim()
-		ymin, ymax = plt.ylim()
+		try:
+			plt.fignum_exists()
+			xmin, xmax = plt.xlim()
+			ymin, ymax = plt.ylim()
 
-		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-		index_time_left=(np.abs(Data.time-ymin)).argmin()
-		index_time_right=(np.abs(Data.time-ymax)).argmin()
+			index_time_left=(np.abs(Data.time-ymin)).argmin()
+			index_time_right=(np.abs(Data.time-ymax)).argmin()
+		except:
+			index_wavelength_left=0
+			index_wavelength_right=Data.wavelength[-1]
+
+			index_time_left=0
+			index_time_right=Data.wavelength[-1]
+
 
 		U, s, V_T = linalg.svd(Data.TrA_Data[index_time_left:index_time_right,index_wavelength_left:index_wavelength_right])
 
@@ -567,7 +576,7 @@ class MainWindow(HasTraits):
 		plt.title("First 10 singular values")
 		plt.show()
 
-		self.log = "First 5 singular values %s in range wavelength %s to %s, time %s to %s \n %s" %(s[0:5], xmin, xmax, ymin, ymax, self.log)
+		self.log = "%s \nFirst 5 singular values %s in range wavelength %s to %s, time %s to %s" %(self.log,s[0:5], xmin, xmax, ymin, ymax)
 
 	def _EFA_fired(self):
 
@@ -630,6 +639,8 @@ class MainWindow(HasTraits):
 		plt.show()
 
 	def _Multiple_Trace_fired(self):
+		self.Traces_num = 0
+		Data.Traces = 0
 
 		plt.figure(figsize=(15,10))
 		plt.contourf(Data.wavelength, Data.time, Data.TrA_Data, 100)
@@ -645,18 +656,26 @@ class MainWindow(HasTraits):
 
 		Data.Traces = Data.TrA_Data[:,index_wavelength_left:index_wavelength_right].transpose()
 
-		self.log= '%s Traces saved from %s to %s\n %s' %(Data.Traces.shape[0], fittingto[0,0], fittingto[1,0],self.log)
+		self.log= '%s \n%s Traces saved from %s to %s' %(self.log,Data.Traces.shape[0], fittingto[0,0], fittingto[1,0])
 
 	def _Plot_3D_fired(self):
 
-		xmin, xmax = plt.xlim()
-		ymin, ymax = plt.ylim()
+		try:
+			plt.fignum_exists()
+			xmin, xmax = plt.xlim()
+			ymin, ymax = plt.ylim()
 
-		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-		index_time_left=(np.abs(Data.time-ymin)).argmin()
-		index_time_right=(np.abs(Data.time-ymax)).argmin()
+			index_time_left=(np.abs(Data.time-ymin)).argmin()
+			index_time_right=(np.abs(Data.time-ymax)).argmin()
+		except:
+			index_wavelength_left=0
+			index_wavelength_right=Data.wavelength[-1]
+
+			index_time_left=0
+			index_time_right=Data.wavelength[-1]
 
 		Data.Three_d = Data.TrA_Data[index_time_left:index_time_right,index_wavelength_left:index_wavelength_right]
 		Data.Three_d_wavelength = Data.wavelength[index_wavelength_left:index_wavelength_right]
@@ -680,11 +699,19 @@ class MainWindow(HasTraits):
 
 		#Sends 3D plot to mayavi in gui
 
-		self.plot = self.scene.mlab.surf(yi,xi,zi, warp_scale=-np.max(Data.Three_d)*100000)
+		#uncomment for plotting actual data matrix
+		#self.scene.mlab.surf(Data.time,Data.wavelength,Data.TrA_Data,warp_scale=-self.z_height*100)
+
+		#gridded plot which gives correct view
+		self.plot = self.scene.mlab.surf(yi,xi,zi, warp_scale=-self.z_height*100)
 		self.scene.mlab.colorbar(orientation="vertical")
-		self.scene.mlab.axes(nb_labels=5)
+		self.scene.mlab.axes(nb_labels=5,)
 		self.scene.mlab.ylabel("wavelength (nm)")
 		self.scene.mlab.xlabel("time (ps)")
+
+	def _z_height_changed(self):
+		# Need to work out how to just modify the the warp scalar without redrawing
+		self._Plot_3D_fired()
 
 	def _Plot_2D_fired(self):
 		plt.figure()
@@ -755,14 +782,22 @@ class MainWindow(HasTraits):
 		plt.show()
 
 	def _multiple_plots_fired(self):
-		xmin, xmax = plt.xlim()
-		ymin, ymax = plt.ylim()
+		try:
+			plt.fignum_exists()
+			xmin, xmax = plt.xlim()
+			ymin, ymax = plt.ylim()
 
-		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-		index_time_left=(np.abs(Data.time-ymin)).argmin()
-		index_time_right=(np.abs(Data.time-ymax)).argmin()
+			index_time_left=(np.abs(Data.time-ymin)).argmin()
+			index_time_right=(np.abs(Data.time-ymax)).argmin()
+		except:
+			index_wavelength_left=0
+			index_wavelength_right=Data.wavelength[-1]
+
+			index_time_left=0
+			index_time_right=Data.wavelength[-1]
 
 		indexwave = int((index_wavelength_right-index_wavelength_left)/10)
 
@@ -809,14 +844,22 @@ class MainWindow(HasTraits):
 		plt.show()
 
 	def _Normalise_fired(self):
-		xmin, xmax = plt.xlim()
-		ymin, ymax = plt.ylim()
+		try:
+			plt.fignum_exists()
+			xmin, xmax = plt.xlim()
+			ymin, ymax = plt.ylim()
 
-		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-		index_time_left=(np.abs(Data.time-ymin)).argmin()
-		index_time_right=(np.abs(Data.time-ymax)).argmin()
+			index_time_left=(np.abs(Data.time-ymin)).argmin()
+			index_time_right=(np.abs(Data.time-ymax)).argmin()
+		except:
+			index_wavelength_left=0
+			index_wavelength_right=Data.wavelength[-1]
+
+			index_time_left=0
+			index_time_right=Data.wavelength[-1]
 
 		indextime = int((index_time_right-index_time_left)/10)
 
@@ -894,7 +937,7 @@ class MainWindow(HasTraits):
 			igor.clear()
 
 		except:
-			self.log = 'setuptools not installed or Igor not open. Saved traces into directory\n %s' %(self.log)
+			self.log = '%s \nsetuptools not installed or Igor not open. Saved traces into directory' %(self.log)
 			try:
 				f=open(("%s\Traces.txt" %(os.path.dirname(self.TrA_Raw_file))), 'w')
 				for i in range(len(Data.time)):
@@ -904,7 +947,7 @@ class MainWindow(HasTraits):
 					f.write("\n")
 				f.close()
 			except:
-				self.log = 'Please select multiple traces\n %s' %(self.log)
+				self.log = '%s \nPlease select multiple traces' %(self.log)
 
 	def _Save_Glo_fired(self):
 		# Generates ouput file in Glotaran Time explicit format
@@ -923,7 +966,7 @@ class MainWindow(HasTraits):
 				f.write(" %s" %(Data.TrA_Data[j,i]))
 			f.write("\n")
 
-		self.log = 'Saved Glotaran file to TrA data file directory\n %s' %(self.log)
+		self.log = '%s \nSaved Glotaran file to TrA data file directory' %(self.log)
 
 	def _Save_csv_fired(self):
 		now = date.today()
@@ -939,7 +982,7 @@ class MainWindow(HasTraits):
 				f.write(",%s" %(Data.TrA_Data[j,i]))
 			f.write("\n")
 
-		self.log= 'Saved to TrA data file directory\n %s' %(self.log)
+		self.log= '%s \nSaved to TrA data file directory' %(self.log)
 
 	def _Save_log_fired(self):
 		now = date.today()
@@ -947,12 +990,7 @@ class MainWindow(HasTraits):
 		f = open(pathname, 'w')
 		f.write("%s"%(self.log))
 
-		self.log= ('Saved log file to %s\n %s' %(os.path.dirname(self.TrA_Raw_file),self.log))
-
-	def _Clear_Traces_fired(self):
-		self.Traces_num = 0
-		Data.Traces = 0
-		self.log='Cleared all of the traces\n %s' %(self.log)
+		self.log= '%s \nSaved log file to %s' %(self.log,os.path.dirname(self.TrA_Raw_file))
 
 	def _Help_fired(self):
 		help = Help().edit_traits()
