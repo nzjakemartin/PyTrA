@@ -24,24 +24,24 @@ from PyTrA_Help import Help
 ##--Describes exponential models--##
 
 class Convoluted_exp1(FunctionModel1DAuto):
-	def f(self,x,T1=1,A1=1,w=1,mu=1,y0=1):
-		d = (w/(2*np.sqrt(2*np.log(2))))
-		return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + y0
+	def f(self,x,Tone=20,Aone=0.1,fwhm=0.5,mu=0,c=0):
+		d = (fwhm/(2*np.sqrt(2*np.log(2))))
+		return Aone*1/2*np.exp(-x/Tone)*np.exp((mu+(d**2)/(2*Tone))/Tone)*(1+special.erf((x-(mu+(d**2)/Tone))/(np.sqrt(2)*d))) + c
 
 class Convoluted_exp2(FunctionModel1DAuto):
-	def f(self,x,T1=1,T2=2,A1=1,A2=1,w=0.25,mu=1,y0=1):
-		d = w/(2*np.sqrt(2*np.log(2)))
-		return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + y0
+	def f(self,x,Tone=20,Ttwo=20,Aone=0.1,Atwo=0.1,fwhm=0.5,mu=0,c=0):
+		d = fwhm/(2*np.sqrt(2*np.log(2)))
+		return Aone*1/2*np.exp(-x/Tone)*np.exp((mu+(d**2)/(2*Tone))/Tone)*(1+special.erf((x-(mu+(d**2)/Tone))/(np.sqrt(2)*d))) + Atwo*1/2*np.exp(-x/Ttwo)*np.exp((mu+(d**2)/(2*Ttwo))/Ttwo)*(1+special.erf((x-(mu+(d**2)/Ttwo))/(np.sqrt(2)*d))) + c
 
 class Convoluted_exp3(FunctionModel1DAuto):
-	def f(self,x,T1=1,T2=1,T3=1,A1=1,A2=1,A3=1,w=1,mu=1,y0=1):
-		d = (w/(2*np.sqrt(2*np.log(2))))
-		return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + A3*1/2*np.exp(-x/T3)*np.exp((mu+(d**2)/(2*T3))/T3)*(1+special.erf((x-(mu+(d**2)/T3))/(np.sqrt(2)*d))) + y0
+	def f(self,x,Tone=20,Ttwo=20,Tthree=20,Aone=0.1,Atwo=0.1,Athree=0.1,fwhm=0.5,mu=0,c=0):
+		d = (fwhm/(2*np.sqrt(2*np.log(2))))
+		return Aone*1/2*np.exp(-x/Tone)*np.exp((mu+(d**2)/(2*Tone))/Tone)*(1+special.erf((x-(mu+(d**2)/Tone))/(np.sqrt(2)*d))) + Atwo*1/2*np.exp(-x/Ttwo)*np.exp((mu+(d**2)/(2*Ttwo))/Ttwo)*(1+special.erf((x-(mu+(d**2)/Ttwo))/(np.sqrt(2)*d))) + Athree*1/2*np.exp(-x/Tthree)*np.exp((mu+(d**2)/(2*Tthree))/Tthree)*(1+special.erf((x-(mu+(d**2)/Tthree))/(np.sqrt(2)*d))) + c
 
 class Convoluted_exp4(FunctionModel1DAuto):
-	def f(self,x,T1=1,T2=1,T3=1,T4=1,A1=1,A2=1,A3=1,A4=1,w=1,mu=1,y0=1,):
-		d = (w/(2*np.sqrt(2*np.log(2))))
-		return A1*1/2*np.exp(-x/T1)*np.exp((mu+(d**2)/(2*T1))/T1)*(1+special.erf((x-(mu+(d**2)/T1))/(np.sqrt(2)*d))) + A2*1/2*np.exp(-x/T2)*np.exp((mu+(d**2)/(2*T2))/T2)*(1+special.erf((x-(mu+(d**2)/T2))/(np.sqrt(2)*d))) + A3*1/2*np.exp(-x/T3)*np.exp((mu+(d**2)/(2*T3))/T3)*(1+special.erf((x-(mu+(d**2)/T3))/(np.sqrt(2)*d))) + A4*1/2*np.exp(-x/T4)*np.exp((mu+(d**2)/(2*T4))/T4)*(1+special.erf((x-(mu+(d**2)/T4))/(np.sqrt(2)*d))) + y0
+	def f(self,x,Tone=20,Ttwo=20,Tthree=20,Tfour=20,Aone=0.1,Atwo=0.1,Athree=0.1,Afour=0.1,fwhm=0.5,mu=0,c=0):
+		d = (fwhm/(2*np.sqrt(2*np.log(2))))
+		return Aone*1/2*np.exp(-x/Tone)*np.exp((mu+(d**2)/(2*Tone))/Tone)*(1+special.erf((x-(mu+(d**2)/Tone))/(np.sqrt(2)*d))) + Atwo*1/2*np.exp(-x/Ttwo)*np.exp((mu+(d**2)/(2*Ttwo))/Ttwo)*(1+special.erf((x-(mu+(d**2)/Ttwo))/(np.sqrt(2)*d))) + Athree*1/2*np.exp(-x/Tthree)*np.exp((mu+(d**2)/(2*Tthree))/Tthree)*(1+special.erf((x-(mu+(d**2)/Tthree))/(np.sqrt(2)*d))) + Afour*1/2*np.exp(-x/Tfour)*np.exp((mu+(d**2)/(2*Tfour))/Tfour)*(1+special.erf((x-(mu+(d**2)/Tfour))/(np.sqrt(2)*d))) + c
 
 register_model(Convoluted_exp1, name='Convoluted_exp1', overwrite=False)
 register_model(Convoluted_exp2, name='Convoluted_exp2', overwrite=False)
@@ -96,18 +96,20 @@ class OhioLoader(HasTraits):
 class FFTfilter(HasTraits):
 	raw_plot = Button('2D plot of raw data')
 	FFT_raw = Button('FFT')
-	filter_high = int(0)
 	filter_low = int(0)
+	filter_high = int(0)
 	data = np.array([])
-	fft_filter = Button('Apply filter')
+	filter_spec = Button('Apply spectral filter')
+	filter_time = Button('Apply temporal filter')
 	accept = Button('Apply to data set')
 
 	view = View(
 		Item('raw_plot', show_label=False),
 		Item('FFT_raw', show_label=False),
-		Item('filter_high', show_label=False),
 		Item('filter_low', show_label=False),
-		Item('fft_filter', show_label=False),
+		Item('filter_high', show_label=False),
+		Item('filter_spec', show_label=False),
+		Item('filter_time', show_label=False),
 		Item('accept', show_label=False),
 		title   = 'FFT filter', resizable=False,
 		)
@@ -126,11 +128,40 @@ class FFTfilter(HasTraits):
 		plt.title('FFT of raw')
 		plt.show()
 
-	def _fft_filter_fired(self):
-		Data.FFT[int(self.filter_high):int(self.filter_low),:] = 0
-		Data.FFT[int(Data.time.shape[0])-int(self.filter_low)+1:int(Data.time.shape[0])-int(self.filter_high)+1,:] = 0
+	def _filter_spec_fired(self):
+
+		"""
+		Filters out spectral noise using a low pass filter
+		"""
+		Data.FFT[:,int(self.filter_high):int(self.filter_low)] = 0
+		print Data.FFT.shape
+		Data.FFT[:,int(Data.wavelength.shape[0]-1)-int(self.filter_high):int(Data.wavelength.shape[0]-1)-int(self.filter_low)] = 0
 		plt.figure()
-		plt.contourf(np.log(np.abs(Data.FFT)**2),cmap=plt.cm.Greys_r)
+		plt.contourf(np.log(np.abs(Data.FFT)**2+0.0000001),cmap=plt.cm.Greys_r)
+		plt.show()
+
+		shift = fft.fftshift(Data.FFT)
+		self.data = fft.ifft2(shift)
+		plt.figure()
+		plt.contourf(self.data,200,cmap=plt.cm.Greys_r)
+		plt.title('filtered raw data')
+		plt.show()
+
+	def _filter_time_fired(self):
+
+		"""
+		Filters out temporal noise with a band pass filter from time zero to latest time
+		"""
+
+		zero_index = (np.abs(Data.time-0)).argmin()
+
+		fft_shift = fft.fft2(Data.TrA_Data[zero_index:,:])
+		Data.FFT = fft.ifftshift(fft_shift)
+
+		Data.FFT[int(self.filter_high):int(self.filter_low),:] = 0
+		Data.FFT[int(Data.time.shape[0]-1)-int(self.filter_low):int(Data.time.shape[0]-1)-int(self.filter_high),:] = 0
+		plt.figure()
+		plt.contourf(np.log(np.abs(Data.FFT)**2+0.0000001),cmap=plt.cm.Greys_r)
 		plt.show()
 
 		shift = fft.fftshift(Data.FFT)
@@ -141,7 +172,8 @@ class FFTfilter(HasTraits):
 		plt.show()
 
 	def _accept_fired(self):
-		Data.TrA_Data = np.real(self.data)
+		zero_index = (np.abs(Data.time-0)).argmin()
+		Data.TrA_Data[zero_index:,:] = np.real(self.data)
 
 class MainWindow(HasTraits):
 	scene = Instance(MlabSceneModel, ())
@@ -156,7 +188,8 @@ class MainWindow(HasTraits):
 	PlotChirp = Button("2D plot of chirp")
 	Timelim = Array(np.float,(1,2))
 	Fix_Chirp = Button("Fix for chirp")
-	Fit_Trace = Button("Fit trace")
+	Fit_Trace = Button("Fit Trace")
+	Fit_Spec = Button("Fit Spectra")
 	mcmc = Button("MCMC fitting")
 	Fit_Chirp = Button("Fit chirp")
 	SVD = Enum(1,2,3,4,5)
@@ -181,7 +214,7 @@ class MainWindow(HasTraits):
 	Save_csv = Button("Save csv with title as file name")
 	Save_log = Button("Save log file")
 	Help = Button("Help")
-	log = Str
+	log = Str("PyTrA:Python based fitting of Ultra-fast Transient Absorption Data")
 
 	#Setting up views
 
@@ -202,6 +235,7 @@ class MainWindow(HasTraits):
 		Item('Fix_Chirp', show_label=False),
 		Label('Data Analysis'),
 		Item('Fit_Trace', show_label=False),
+		Item('Fit_Spec', show_label=False),
 		Item('mcmc',show_label=False),
 		Item('Plot_2D', show_label=False),
 		Item('SVD', show_label=False),
@@ -310,13 +344,13 @@ class MainWindow(HasTraits):
 			Data.Chirp = Chirp_Raw[1:Chirp_Raw_m,1:Chirp_Raw_n]
 
 		except:
-			self.log=("%s \nNo Chirp found"%(self.log))
+			self.log=("%s\n---\nNo Chirp found"%(self.log))
 
 		self.log=('%s\nData file imported of size t=%s and wavelength=%s name=%s' %(self.log,Data.TrA_Data.shape[0],Data.TrA_Data.shape[1],TrA_Raw_name))
 
 	def _Ohioloader_fired(self):
 		ohio = OhioLoader().edit_traits()
-		self.log = ('%s \nData file imported of size %s by %s' %(self.log,Data.TrA_Data.shape[0],Data.TrA_Data.shape[1]))
+		self.log = ('%s\n---\nData file imported of size %s by %s' %(self.log,Data.TrA_Data.shape[0],Data.TrA_Data.shape[1]))
 
 	def _fft_filter_fired(self):
 		fft_live = FFTfilter().edit_traits()
@@ -333,7 +367,7 @@ class MainWindow(HasTraits):
 
 		Data.time = Data.time-fittingto[0][1]
 
-		self.log = "%s \nDeleted traces between %s and %s" %(self.log,fittingto[0,0],fittingto[1,0])
+		self.log = "%s\n---\nDeleted traces between %s and %s" %(self.log,fittingto[0,0],fittingto[1,0])
 
 	def _DeleteTraces_fired(self):
 		plt.figure()
@@ -366,7 +400,7 @@ class MainWindow(HasTraits):
 			Data.TrA_Data = np.hstack((Data.TrA_Data[:,:index_wavelength_left],Data.TrA_Data[:,index_wavelength_right:]))
 			Data.wavelength = np.hstack((Data.wavelength[:index_wavelength_left],Data.wavelength[index_wavelength_right:]))
 
-		self.log = "%s \nDeleted traces between %s and %s" %(self.log,fittingto[0,0],fittingto[1,0])
+		self.log = "%s\n---\nDeleted traces between %s and %s" %(self.log,fittingto[0,0],fittingto[1,0])
 
 	def _Delete_spectra_fired(self):
 		plt.figure()
@@ -398,7 +432,7 @@ class MainWindow(HasTraits):
 			Data.TrA_Data = np.vstack((Data.TrA_Data[:index_time_top,:],Data.TrA_Data[index_time_bottom:,:]))
 			Data.time = np.hstack((Data.time[:index_time_top],Data.time[index_time_bottom:]))
 
-		self.log = "%s \nDeleted spectra between %s and %s" %(self.log,fittingto[0,1],fittingto[1,1])
+		self.log = "%s\n---\nDeleted spectra between %s and %s" %(self.log,fittingto[0,1],fittingto[1,1])
 
 	def _PlotChirp_fired(self):
 		plt.figure()
@@ -451,7 +485,7 @@ class MainWindow(HasTraits):
 			fixed_wave = f(Data.time)
 			Data.TrA_Data[:, i] = fixed_wave
 
-		self.log = "%s \nPolynomial fit with form %s*x^2 + %s*x + %s stdev %s" %(self.log,fitcoeff[0],fitcoeff[1],fitcoeff[2],stdev)
+		self.log = "%s\n---\nPolynomial fit with form %s*x^2 + %s*x + %s stdev %s" %(self.log,fitcoeff[0],fitcoeff[1],fitcoeff[2],stdev)
 
 	def _Fit_Trace_fired(self):
 		plt.figure()
@@ -464,7 +498,7 @@ class MainWindow(HasTraits):
 		plt.close()
 
 		index_wavelength=(np.abs(Data.wavelength-fittingto[:,0])).argmin()
-		Data.tracefitmodel = fitgui.fit_data(Data.time,Data.TrA_Data[:,index_wavelength],autoupdate=False,model=Convoluted_exp1,include_models='Convoluted_exp1,Convoluted_exp2,Convoluted_exp3,Convoluted_exp4')
+		Data.tracefitmodel = fitgui.fit_data(Data.time,Data.TrA_Data[:,index_wavelength],autoupdate=False,model=Convoluted_exp1,include_models='Convoluted_exp1,Convoluted_exp2,Convoluted_exp3,Convoluted_exp4,doublegaussian,doubleopposedgaussian,gaussian')
 
 		#If you want to have the fitting gui in another window while PyTrA remains responsive change the fit model to a model instance and use the line bellow to call it
 		#Data.tracefitmodel.edit_traits()
@@ -473,40 +507,59 @@ class MainWindow(HasTraits):
 		results_par = Data.tracefitmodel.params
 		results = Data.tracefitmodel.parvals
 
-		self.log= ('%s \nFitted parameters at wavelength %s \nFitting parameters'%(self.log,fittingto[:,0]))
+		self.log= ('%s\n---\nFitted parameters at wavelength %s \nFitting parameters'%(self.log,fittingto[:,0]))
 
 		for i in range(len(results)):
-			self.log = ('%s \n%s = %s +- %s'%(self.log,results_par[i],results[i],results_error[i]))
+			self.log = ('%s\n%s = %s +- %s'%(self.log,results_par[i],results[i],results_error[i]))
+
+	def _Fit_Spec_fired(self):
+		plt.figure()
+		plt.contourf(Data.wavelength, Data.time, Data.TrA_Data, 100)
+		plt.title('Pick time to fit')
+		plt.xlabel('Wavelength')
+		plt.ylabel('Time')
+		fittingto = np.array(ginput(1))
+		plt.show()
+		plt.close()
+
+		index_time=(np.abs(Data.time-fittingto[:,1])).argmin()
+		Data.tracefitmodel = fitgui.fit_data(Data.wavelength,Data.TrA_Data[index_time,:],autoupdate=False)
+
+		#If you want to have the fitting gui in another window while PyTrA remains responsive change the fit model to a model instance and use the line bellow to call it
+		#Data.tracefitmodel.edit_traits()
+
+		results_error = Data.tracefitmodel.getCov().diagonal()
+		results_par = Data.tracefitmodel.params
+		results = Data.tracefitmodel.parvals
+
+		self.log= ('%s\n---\nFitted parameters at time %s \nFitting parameters'%(self.log,fittingto[:,1]))
+
+		for i in range(len(results)):
+			self.log = ('%s\n---\n%s = %s +- %s'%(self.log,results_par[i],results[i],results_error[i]))
 
 	def _mcmc_fired(self):
-		mcmc_app = mcmc.MCMC(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
-		mcmc_app.edit_traits()
-		mcmc_app = mcmc.MCMC(parameters=[])
+		mcmc_app = mcmc.MCMC_1(parameters=[ mcmc.Params(name=i) for i in Data.tracefitmodel.params])
+		mcmc_app.edit_traits(kind='livemodal')
+		mcmc_app = mcmc.MCMC_1(parameters=[])
+		self.log = ('%s\n---\n---MCMC sampler summary (pymc)---\nBayesian Information Criterion = %s'%(self.log,Data.mcmc['MAP']))
+		for i in Data.tracefitmodel.params:
+			self.log = ('%s\n%s,mean %s,stdev %s'%(self.log,i,Data.mcmc['MCMC'].stats()[i]['mean'],Data.mcmc['MCMC'].stats()[i]['standard deviation']))
 
 	def _Global_fired(self):
 		global_app = glo.Global(parameters=[ glo.Params(name=i) for i in Data.tracefitmodel.params])
-		global_app.edit_traits()
+		global_app.edit_traits(kind='livemodal')
 		global_app = glo.Global(parameters=[])
 
 	def _SVD_fired(self):
 
-		try:
-			plt.fignum_exists()
-			xmin, xmax = plt.xlim()
-			ymin, ymax = plt.ylim()
+		xmin, xmax = plt.xlim()
+		ymin, ymax = plt.ylim()
 
-			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-			index_time_left=(np.abs(Data.time-ymin)).argmin()
-			index_time_right=(np.abs(Data.time-ymax)).argmin()
-		except:
-			index_wavelength_left=0
-			index_wavelength_right=Data.wavelength[-1]
-
-			index_time_left=0
-			index_time_right=Data.wavelength[-1]
-
+		index_time_left=(np.abs(Data.time-ymin)).argmin()
+		index_time_right=(np.abs(Data.time-ymax)).argmin()
 
 		U, s, V_T = linalg.svd(Data.TrA_Data[index_time_left:index_time_right,index_wavelength_left:index_wavelength_right])
 
@@ -576,7 +629,7 @@ class MainWindow(HasTraits):
 		plt.title("First 10 singular values")
 		plt.show()
 
-		self.log = "%s \nFirst 5 singular values %s in range wavelength %s to %s, time %s to %s" %(self.log,s[0:5], xmin, xmax, ymin, ymax)
+		self.log = "%s\nFirst 5 singular values %s in range wavelength %s to %s, time %s to %s" %(self.log,s[0:5], xmin, xmax, ymin, ymax)
 
 	def _EFA_fired(self):
 
@@ -656,26 +709,18 @@ class MainWindow(HasTraits):
 
 		Data.Traces = Data.TrA_Data[:,index_wavelength_left:index_wavelength_right].transpose()
 
-		self.log= '%s \n%s Traces saved from %s to %s' %(self.log,Data.Traces.shape[0], fittingto[0,0], fittingto[1,0])
+		self.log= '%s\n\n%s Traces saved from %s to %s' %(self.log,Data.Traces.shape[0], fittingto[0,0], fittingto[1,0])
 
 	def _Plot_3D_fired(self):
 
-		try:
-			plt.fignum_exists()
-			xmin, xmax = plt.xlim()
-			ymin, ymax = plt.ylim()
+		xmin, xmax = plt.xlim()
+		ymin, ymax = plt.ylim()
 
-			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-			index_time_left=(np.abs(Data.time-ymin)).argmin()
-			index_time_right=(np.abs(Data.time-ymax)).argmin()
-		except:
-			index_wavelength_left=0
-			index_wavelength_right=Data.wavelength[-1]
-
-			index_time_left=0
-			index_time_right=Data.wavelength[-1]
+		index_time_left=(np.abs(Data.time-ymin)).argmin()
+		index_time_right=(np.abs(Data.time-ymax)).argmin()
 
 		Data.Three_d = Data.TrA_Data[index_time_left:index_time_right,index_wavelength_left:index_wavelength_right]
 		Data.Three_d_wavelength = Data.wavelength[index_wavelength_left:index_wavelength_right]
@@ -683,8 +728,12 @@ class MainWindow(HasTraits):
 
 		self.scene.mlab.clf()
 
+		#Gets smallest spacing to use to construct mesh
+		y_step = Data.time[(np.abs(Data.time-0)).argmin()+1]-Data.time[(np.abs(Data.time-0)).argmin()]
+
 		x = np.linspace(Data.Three_d_wavelength[0],Data.Three_d_wavelength[-1],len(Data.Three_d_wavelength))
-		y = np.linspace(Data.Three_d_time[0], Data.Three_d_time[-1],len(Data.Three_d_wavelength))
+		y = np.arange(Data.Three_d_time[0], Data.Three_d_time[-1],y_step)
+		print y.shape
 		[xi,yi] = np.meshgrid(x,y)
 
 		for i in range(len(Data.Three_d_wavelength)):
@@ -701,9 +750,9 @@ class MainWindow(HasTraits):
 
 		#uncomment for plotting actual data matrix
 		#self.scene.mlab.surf(Data.time,Data.wavelength,Data.TrA_Data,warp_scale=-self.z_height*100)
-
 		#gridded plot which gives correct view
-		self.plot = self.scene.mlab.surf(yi,xi,zi, warp_scale=-self.z_height*100)
+		self.scene.mlab.surf(yi,xi,zi, warp_scale=-self.z_height*100)
+		self.scene.mlab.imshow(yi,xi,zi)
 		self.scene.mlab.colorbar(orientation="vertical")
 		self.scene.mlab.axes(nb_labels=5,)
 		self.scene.mlab.ylabel("wavelength (nm)")
@@ -782,22 +831,15 @@ class MainWindow(HasTraits):
 		plt.show()
 
 	def _multiple_plots_fired(self):
-		try:
-			plt.fignum_exists()
-			xmin, xmax = plt.xlim()
-			ymin, ymax = plt.ylim()
 
-			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+		xmin, xmax = plt.xlim()
+		ymin, ymax = plt.ylim()
 
-			index_time_left=(np.abs(Data.time-ymin)).argmin()
-			index_time_right=(np.abs(Data.time-ymax)).argmin()
-		except:
-			index_wavelength_left=0
-			index_wavelength_right=Data.wavelength[-1]
+		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-			index_time_left=0
-			index_time_right=Data.wavelength[-1]
+		index_time_left=(np.abs(Data.time-ymin)).argmin()
+		index_time_right=(np.abs(Data.time-ymax)).argmin()
 
 		indexwave = int((index_wavelength_right-index_wavelength_left)/10)
 
@@ -844,22 +886,16 @@ class MainWindow(HasTraits):
 		plt.show()
 
 	def _Normalise_fired(self):
-		try:
-			plt.fignum_exists()
-			xmin, xmax = plt.xlim()
-			ymin, ymax = plt.ylim()
 
-			index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
-			index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
 
-			index_time_left=(np.abs(Data.time-ymin)).argmin()
-			index_time_right=(np.abs(Data.time-ymax)).argmin()
-		except:
-			index_wavelength_left=0
-			index_wavelength_right=Data.wavelength[-1]
+		xmin, xmax = plt.xlim()
+		ymin, ymax = plt.ylim()
 
-			index_time_left=0
-			index_time_right=Data.wavelength[-1]
+		index_wavelength_left=(np.abs(Data.wavelength-xmin)).argmin()
+		index_wavelength_right=(np.abs(Data.wavelength-xmax)).argmin()
+
+		index_time_left=(np.abs(Data.time-ymin)).argmin()
+		index_time_right=(np.abs(Data.time-ymax)).argmin()
 
 		indextime = int((index_time_right-index_time_left)/10)
 
@@ -937,7 +973,7 @@ class MainWindow(HasTraits):
 			igor.clear()
 
 		except:
-			self.log = '%s \nsetuptools not installed or Igor not open. Saved traces into directory' %(self.log)
+			self.log = '%s\n\nsetuptools not installed or Igor not open. Saved traces into directory' %(self.log)
 			try:
 				f=open(("%s\Traces.txt" %(os.path.dirname(self.TrA_Raw_file))), 'w')
 				for i in range(len(Data.time)):
@@ -947,7 +983,7 @@ class MainWindow(HasTraits):
 					f.write("\n")
 				f.close()
 			except:
-				self.log = '%s \nPlease select multiple traces' %(self.log)
+				self.log = '%s\n\nPlease select multiple traces' %(self.log)
 
 	def _Save_Glo_fired(self):
 		# Generates ouput file in Glotaran Time explicit format
@@ -982,7 +1018,7 @@ class MainWindow(HasTraits):
 				f.write(",%s" %(Data.TrA_Data[j,i]))
 			f.write("\n")
 
-		self.log= '%s \nSaved to TrA data file directory' %(self.log)
+		self.log= '%s\n\nSaved to TrA data file directory' %(self.log)
 
 	def _Save_log_fired(self):
 		now = date.today()
@@ -990,7 +1026,7 @@ class MainWindow(HasTraits):
 		f = open(pathname, 'w')
 		f.write("%s"%(self.log))
 
-		self.log= '%s \nSaved log file to %s' %(self.log,os.path.dirname(self.TrA_Raw_file))
+		self.log= '%s\n\nSaved log file to %s' %(self.log,os.path.dirname(self.TrA_Raw_file))
 
 	def _Help_fired(self):
 		help = Help().edit_traits()

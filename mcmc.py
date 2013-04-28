@@ -1,12 +1,13 @@
 from pymc import *
-from traits.api import  HasTraits, File, Button, Array, Enum, Instance, Str, List, HasPrivateTraits, Float, Int
+from traits.api import  HasTraits, File, Button, Array, Enum, Instance, Str, List, HasPrivateTraits, Float, Int, Bool
 from traitsui.api import Group, Item, View, Label, HSplit, Tabbed, ListEditor
 from Data import Data
 import matplotlib.pyplot as plt
 
-class MCMC(HasTraits):
+class MCMC_1(HasTraits):
 	parameters = List
 	iter = Int(10000)
+	thin = Int(2)
 	burn_in = Int(0)
 	run = Button("Run")
 	prior_dict = dict()
@@ -23,6 +24,7 @@ class MCMC(HasTraits):
 
 		Item('iter'),
 		Item('burn_in'),
+		Item('thin'),
 		Item('run'),
 		Label('See log file for ouput'),
 		title   = 'MCMC', resizable=True,
@@ -30,10 +32,6 @@ class MCMC(HasTraits):
 	)
 
 	def _run_fired(self):
-
-		"""
-
-		"""
 		for i in range(len(self.parameters)):
 
 			#Sets a Poisson Distribution
@@ -48,19 +46,23 @@ class MCMC(HasTraits):
 			if self.parameters[i].dist=='Normal':
 				self.prior_dict[self.parameters[i].name]=self.parameters[i].sig
 
-		print "dictionary created"
-		print self.prior_dict
-
 		x,y,w = Data.tracefitmodel.data
 		model = Data.tracefitmodel.getMCMC(x,y,priors=self.prior_dict,datamodel=None)
+		model_fit = MAP(model)
+		Data.mcmc = {}
+		model_fit.fit()
+		Data.mcmc['MAP'] = model_fit.BIC
+		MC = pymc.MCMC(model_fit.variables)
+		MC.sample(self.iter,burn=self.burn_in,thin=self.thin)
+		#for i in Data.tracefitmodel.parms:
+		#	Data.mcmc[i] = MC.stats()[i]
+		Data.mcmc['MCMC'] = MC
 
-		model.sample(self.iter,burn=self.burn_in)
+		for i in range(len(self.parameters)):
+			if self.parameters[i].plot==True:
+				Matplot.plot(MC.trace(self.parameters[i].name))
 
-		Matplot.plot(model)
 		plt.show()
-		model.stats()
-
-		return(self.status)
 
 class Params(HasPrivateTraits):
 	#Name of string
@@ -69,6 +71,7 @@ class Params(HasPrivateTraits):
 	min = Float
 	max = Float
 	sig = Float
+	plot = Bool(False)
 	dist = Enum('Uniform','Normal','Poisson')
 
 	view = View(
@@ -77,4 +80,5 @@ class Params(HasPrivateTraits):
 		Item('max',label='Upper value for Uniform'),
 		Item('sig',label='Sigma value for Normal'),
 		Item('dist',label='Distribution for parameter'),
+		Item('plot',label='plot')
 	)

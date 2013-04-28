@@ -19,4 +19,5 @@ class Data():
 	tracefitmodel = []
 	Traces = np.array([0])
 	Pixels = np.array([])
-	Range = np.array([-1,2])	
+	Range = np.array([-1,2])
+	mcmc = {}
