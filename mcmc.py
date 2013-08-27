@@ -1,17 +1,25 @@
-from pymc import *
-from traits.api import  HasTraits, File, Button, Array, Enum, Instance, Str, List, HasPrivateTraits, Float, Int, Bool
-from traitsui.api import Group, Item, View, Label, HSplit, Tabbed, ListEditor
+from pymc import MCMC, Matplot, geweke, raftery_lewis, MAP, distributions
+import pymc
+from traits.api import  HasTraits, Button, Enum, Str, List, HasPrivateTraits, Float, Int, Bool
+from traitsui.api import Item, View, Label, HSplit, ListEditor
 from Data import Data
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import show
+from inspect import getargspec
+from types import MethodType
 
 class MCMC_1(HasTraits):
 	parameters = List
 	iter = Int(10000)
 	thin = Int(2)
 	burn_in = Int(0)
+	sigmin = Float(0.0)
+	sigmax = Float(1.0)
 	run = Button("Run")
-	prior_dict = dict()
+	plot = Bool(True)
+	plotg = Bool(False)
 	status = Str('')
+	Information = Str('Output')
+	prior_dict = {}
 
 	view = View(
 		Item( 'parameters',
@@ -26,12 +34,18 @@ class MCMC_1(HasTraits):
 		Item('burn_in'),
 		Item('thin'),
 		Item('run'),
-		Label('See log file for ouput'),
-		title   = 'MCMC', resizable=True,
+		Label('Sigma min and max value'),
+		HSplit(Item('sigmin'),Item('sigmax')),
+		Item('plot',label='Distribution plot'),
+		Item('plotg',label='Geweke plot'),
+		Item('Information',style='custom'),
+		title   = 'MCMC',
+		resizable=True,
 		buttons = [ 'OK', 'Cancel' ]
 	)
 
 	def _run_fired(self):
+
 		for i in range(len(self.parameters)):
 
 			#Sets a Poisson Distribution
@@ -46,23 +60,65 @@ class MCMC_1(HasTraits):
 			if self.parameters[i].dist=='Normal':
 				self.prior_dict[self.parameters[i].name]=self.parameters[i].sig
 
+		sig_val = (self.sigmin,self.sigmax)
+		sig = distributions.Uniform('sig',sig_val[0],sig_val[1])
+
 		x,y,w = Data.tracefitmodel.data
-		model = Data.tracefitmodel.getMCMC(x,y,priors=self.prior_dict,datamodel=None)
+		model = Data.tracefitmodel.getMCMC(x,y,priors=self.prior_dict,datamodel=(distributions.Normal,'mu',dict(tau=1/sig/sig)))
 		model_fit = MAP(model)
+
 		Data.mcmc = {}
 		model_fit.fit()
-		Data.mcmc['MAP'] = model_fit.BIC
-		MC = pymc.MCMC(model_fit.variables)
+		MC = MCMC(model_fit.variables)
 		MC.sample(self.iter,burn=self.burn_in,thin=self.thin)
-		#for i in Data.tracefitmodel.parms:
-		#	Data.mcmc[i] = MC.stats()[i]
 		Data.mcmc['MCMC'] = MC
 
-		for i in range(len(self.parameters)):
-			if self.parameters[i].plot==True:
-				Matplot.plot(MC.trace(self.parameters[i].name))
+		Data.mcmc['MAP'] = model_fit.BIC
 
-		plt.show()
+		#Plotting
+		if self.plot == True:
+			Matplot.plot(MC,last=False)
+
+		if self.plotg ==True:
+			scores = geweke(MC, intervals=20)
+			Matplot.geweke_plot(scores)
+		show()
+
+		Data.mcmc['raftery_lewis'] = raftery_lewis(MC, q=0.025, r=0.01, verbose=0)
+
+		#Calculating maximum of the Raftery Lewis diagnostics
+
+		thin = 0
+		burn_in = 0
+		iterations = 0
+
+		#Finding maximum values for Raftery Lewis statistics
+		for i,v in Data.tracefitmodel.pardict.iteritems():
+			if iterations == 0:
+				thin = Data.mcmc['raftery_lewis'][i][4]
+				burn_in = Data.mcmc['raftery_lewis'][i][2]
+				iterations = Data.mcmc['raftery_lewis'][i][3]
+			else:
+				if Data.mcmc['raftery_lewis'][i][4]>thin:
+					thin = Data.mcmc['raftery_lewis'][i][4]
+				if Data.mcmc['raftery_lewis'][i][2]>burn_in:
+					burn_in = Data.mcmc['raftery_lewis'][i][2]
+				if Data.mcmc['raftery_lewis'][i][3]>iterations:
+					iterations = Data.mcmc['raftery_lewis'][i][3]
+		#Sigma
+		if Data.mcmc['raftery_lewis']['sig'][4]>thin:
+			thin = Data.mcmc['raftery_lewis']['sig'][4]
+		if Data.mcmc['raftery_lewis']['sig'][2]>burn_in:
+			burn_in = Data.mcmc['raftery_lewis']['sig'][2]
+		if Data.mcmc['raftery_lewis']['sig'][3]>iterations:
+			iterations = Data.mcmc['raftery_lewis']['sig'][3]
+
+		self.Information = 'Bayesian Information Criterion = %s' %(Data.mcmc['MAP'])
+		self.Information ='%s\n---Raftery Lewis Diagnostics--- \n\nfor probability s=0.95, desired accuracy r=0.01 need;' % self.Information
+		self.Information = '%s\nThinning = %s' %(self.Information,thin)
+		self.Information = '%s\nBurn in = %s' %(self.Information,burn_in)
+		self.Information = '%s\nIterations = %s' %(self.Information,iterations)
+
 
 class Params(HasPrivateTraits):
 	#Name of string
@@ -71,8 +127,7 @@ class Params(HasPrivateTraits):
 	min = Float
 	max = Float
 	sig = Float
-	plot = Bool(False)
-	dist = Enum('Uniform','Normal','Poisson')
+	dist = Enum('Uniform','Normal')
 
 	view = View(
 		Item('name',label='Parameter',style='readonly'),
@@ -80,5 +135,5 @@ class Params(HasPrivateTraits):
 		Item('max',label='Upper value for Uniform'),
 		Item('sig',label='Sigma value for Normal'),
 		Item('dist',label='Distribution for parameter'),
-		Item('plot',label='plot')
+		resizable=False
 	)

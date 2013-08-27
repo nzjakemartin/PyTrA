@@ -5,6 +5,9 @@ import numpy as np
 
 
 class Data():
+	'''
+	Holds all of the data needed in PyTrA
+	'''
 	time_C = np.array([])
 	wavelength_C = np.array([])
 	Chirp = np.array([])
@@ -21,3 +24,5 @@ class Data():
 	Pixels = np.array([])
 	Range = np.array([-1,2])
 	mcmc = {}
+	xi = np.array([])
+	yi = np.array([])
