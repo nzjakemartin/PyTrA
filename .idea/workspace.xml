@@ -2,42 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d3d8d2-5c38-4af0-bd5d-6e1ce2805139" name="Default" comment="">
-<<<<<<< HEAD
-<<<<<<< HEAD
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\A2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\Global_rserve.py" afterPath="" />
-=======
->>>>>>> xml
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\PyTrA.bat" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\array.csv" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\mcmctest.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\run.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\mcmctesting.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\c.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\test.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\a.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\b.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\globaltesting.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\Global_rserve.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\A2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\sig.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Igor\Documents\GitHub\PyTrA\T2.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/w.png" afterPath="$PROJECT_DIR$/w.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/testrunner.xml" afterPath="$PROJECT_DIR$/.idea/testrunner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/A1.png" afterPath="$PROJECT_DIR$/A1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PyTrA.py" afterPath="$PROJECT_DIR$/PyTrA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/y0.png" afterPath="$PROJECT_DIR$/y0.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Global.py" afterPath="$PROJECT_DIR$/Global.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mcmc.py" afterPath="$PROJECT_DIR$/mcmc.py" />
-<<<<<<< HEAD
->>>>>>> Revert "xml"
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/T1.png" afterPath="$PROJECT_DIR$/T1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mu.png" afterPath="$PROJECT_DIR$/mu.png" />
->>>>>>> xml
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="PyTrA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,66 +27,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Global.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Global.py">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <state line="52" column="39" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PyTrA.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PyTrA.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="488" column="32" selection-start="17318" selection-end="17318" vertical-scroll-proportion="0.031481482">
-              <folding>
-                <element signature="e#15#33#0" expanded="true" />
-              </folding>
-=======
-            <state line="67" column="45" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
-              <folding />
->>>>>>> Revert "xml"
-=======
-            <state line="70" column="16" selection-start="1810" selection-end="1810" vertical-scroll-proportion="0.5950704">
-              <folding>
-                <element signature="e#0#117#0" expanded="true" />
-              </folding>
->>>>>>> xml
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="Global.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Global.py">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
-=======
-            <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="2.0882354">
->>>>>>> Revert "xml"
-=======
       <file leaf-file-name="PyTrA.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PyTrA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="480" column="26" selection-start="16935" selection-end="16935" vertical-scroll-proportion="0.0">
->>>>>>> xml
-              <folding>
-                <element signature="e#15#33#0" expanded="true" />
-                <element signature="e#2752#4059#0" expanded="false" />
-                <element signature="e#4090#5482#0" expanded="false" />
-              </folding>
+            <state line="975" column="113" selection-start="34927" selection-end="34927" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mcmc.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="setup.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PyTrA_Help.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PyTrA_Help.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="25" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Global.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Global.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="30" selection-start="2351" selection-end="2351" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/PyModelFit-0.2dev-py2.7.egg/pymodelfit/core.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="708" column="41" selection-start="26278" selection-end="26278" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Data.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="11" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mcmc.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcmc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="0" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.0">
+            <state line="49" column="80" selection-start="813" selection-end="1420" vertical-scroll-proportion="0.5464983">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handler.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/traitsui/handler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="292" column="65" selection-start="11323" selection-end="11323" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -140,17 +123,20 @@
       <list>
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/globaltesting.py" />
+        <option value="$PROJECT_DIR$/Mouse.py" />
+        <option value="$PROJECT_DIR$/Data.py" />
         <option value="$PROJECT_DIR$/mcmc.py" />
-        <option value="$PROJECT_DIR$/PyTrA.py" />
         <option value="$PROJECT_DIR$/Global.py" />
+        <option value="$PROJECT_DIR$/PyTrA.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
-    <option name="y" value="22" />
-    <option name="width" value="1280" />
-    <option name="height" value="774" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -178,16 +164,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -213,13 +190,13 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PyTrA v1" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -232,6 +209,11 @@
       <PyConsoleSettings />
     </option>
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Igor\Documents\GitHub\PyTrA" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.PyTrA">
     <configuration default="false" name="PyTrA" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -239,14 +221,13 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <module name="PyTrA" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyTrA.py" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
@@ -286,7 +267,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -310,6 +290,11 @@
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Python.PyTrA" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.PyTrA" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
@@ -364,36 +349,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
-=======
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
->>>>>>> Revert "xml"
-=======
-    <frame x="2" y="22" width="1280" height="774" extended-state="6" />
->>>>>>> xml
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1280389" sideWeight="0.4762634" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5237366" sideWeight="0.99270666" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1696905" sideWeight="0.67633927" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32589287" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25574273" sideWeight="0.9981447" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3236607" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.06026786" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -418,7 +395,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -428,7 +404,6 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
@@ -449,19 +424,23 @@
     <MESSAGE value="mcmc added" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/Global.py</url>
+          <line>135</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/PyTrA.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="24" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/y0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/w.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/T1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -472,134 +451,91 @@
         <state />
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traitsui/wx/view_application.py">
+    <entry file="file://C:/Python27/Lib/site-packages/numpy/core/arrayprint.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="0" selection-start="3070" selection-end="3131" vertical-scroll-proportion="0.96183205">
-          <folding />
-        </state>
+        <state line="435" column="0" selection-start="14494" selection-end="14494" vertical-scroll-proportion="0.29584774" />
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/A1.png">
+    <entry file="file://C:/Python27/Lib/site-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1575" column="0" selection-start="45342" selection-end="45342" vertical-scroll-proportion="0.29584774" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/numpy/core/numeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2117" column="0" selection-start="60280" selection-end="60280" vertical-scroll-proportion="0.29584774" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mouse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="42" selection-start="517" selection-end="517" vertical-scroll-proportion="0.046831954" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/A2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/y0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-=======
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traitsui/wx/toolkit.py">
+    <entry file="file://C:/Python27/Lib/site-packages/traitsui/handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="0" selection-start="7806" selection-end="7806" vertical-scroll-proportion="0.0">
+        <state line="292" column="65" selection-start="11323" selection-end="11323" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traits/has_traits.py">
+    <entry file="file://$PROJECT_DIR$/Data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2543" column="0" selection-start="103666" selection-end="103666" vertical-scroll-proportion="0.30633804">
-          <folding />
-        </state>
->>>>>>> xml
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traitsui/wx/range_editor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.3309859">
+        <state line="22" column="11" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traitsui/editor.py">
+    <entry file="file://C:/Python27/Lib/site-packages/PyModelFit-0.2dev-py2.7.egg/pymodelfit/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="0" selection-start="9137" selection-end="9137" vertical-scroll-proportion="0.3309859">
+        <state line="708" column="41" selection-start="26278" selection-end="26278" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traitsui/ui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="707" column="0" selection-start="26606" selection-end="26606" vertical-scroll-proportion="0.3309859">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traitsui/handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="0" selection-start="10186" selection-end="10186" vertical-scroll-proportion="0.3309859">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/traits/trait_notifiers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="344" column="0" selection-start="13681" selection-end="13681" vertical-scroll-proportion="0.3309859">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1054" column="0" selection-start="44922" selection-end="44922" vertical-scroll-proportion="0.20179372">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Global.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#117#0" expanded="true" />
-          </folding>
+        <state line="92" column="30" selection-start="2351" selection-end="2351" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcmc.py">
+    <entry file="file://$PROJECT_DIR$/PyTrA_Help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="39" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0">
-=======
-    <entry file="file://$PROJECT_DIR$/mcmc.py">
+        <state line="61" column="25" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="67" column="45" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
->>>>>>> Revert "xml"
-=======
-        <state line="57" column="0" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.0">
->>>>>>> xml
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PyTrA.py">
-<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="488" column="32" selection-start="17318" selection-end="17318" vertical-scroll-proportion="0.031481482">
-          <folding>
-            <element signature="e#15#33#0" expanded="true" />
-=======
-        <state line="71" column="40" selection-start="2219" selection-end="2219" vertical-scroll-proportion="2.0882354">
-=======
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="480" column="26" selection-start="16935" selection-end="16935" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#15#33#0" expanded="true" />
-            <element signature="e#2752#4059#0" expanded="false" />
-            <element signature="e#4090#5482#0" expanded="false" />
-          </folding>
+        <state line="975" column="113" selection-start="34927" selection-end="34927" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Global.py">
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="16" selection-start="1810" selection-end="1810" vertical-scroll-proportion="0.5950704">
->>>>>>> xml
-          <folding>
-            <element signature="e#0#117#0" expanded="true" />
->>>>>>> Revert "xml"
-          </folding>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcmc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="80" selection-start="813" selection-end="1420" vertical-scroll-proportion="0.5464983">
+          <folding />
         </state>
       </provider>
     </entry>
