@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c7c2f48-66f3-455e-aaff-6f3a57eab7a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data.py" afterPath="$PROJECT_DIR$/Data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PyTrA.py" afterPath="$PROJECT_DIR$/PyTrA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PyTrA_Help.py" afterPath="$PROJECT_DIR$/PyTrA_Help.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mcmc.py" afterPath="$PROJECT_DIR$/mcmc.py" />
     </list>
     <ignored path="PyTrA v1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,15 +28,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PyTrA_Help.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PyTrA_Help.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="33" selection-start="8868" selection-end="8868" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Data.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,17 +40,72 @@
       <file leaf-file-name="PyTrA.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PyTrA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="25" selection-start="11419" selection-end="11419" vertical-scroll-proportion="0.33409873">
+            <state line="319" column="31" selection-start="12622" selection-end="12622" vertical-scroll-proportion="0.37362638">
               <folding>
-                <element signature="e#1407#1604#0" expanded="false" />
-                <element signature="e#1651#1968#0" expanded="false" />
-                <element signature="e#2015#2470#0" expanded="false" />
-                <element signature="e#2517#3101#0" expanded="false" />
-                <element signature="e#3140#3263#0" expanded="false" />
-                <element signature="e#3302#3537#0" expanded="false" />
-                <element signature="e#3576#3915#0" expanded="false" />
-                <element signature="e#3954#4395#0" expanded="false" />
+                <element signature="e#151#169#0" expanded="true" />
+                <element signature="e#2040#2495#0" expanded="false" />
+                <element signature="e#2542#3126#0" expanded="false" />
+                <element signature="e#3165#3288#0" expanded="false" />
+                <element signature="e#3327#3562#0" expanded="false" />
+                <element signature="e#3601#3940#0" expanded="false" />
+                <element signature="e#3979#4420#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="using_springs.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Useful/using_springs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="17" selection-start="2304" selection-end="2304" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#685#725#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckListEditor_demo.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Standard_Editors/CheckListEditor_demo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="41" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListEditor_demo.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Standard_Editors/ListEditor_demo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="23" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dynamic_range_editor.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Dynamic_Forms/dynamic_range_editor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="61" selection-start="2838" selection-end="2842" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RangeEditor_demo.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Standard_Editors/RangeEditor_demo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="42" selection-start="894" selection-end="894" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="trait_handlers.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/traits/trait_handlers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="169" column="0" selection-start="6154" selection-end="6154" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,18 +124,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="80" column="0" selection-start="2177" selection-end="2177" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python27/Lib/site-packages/PyModelFit-0.2dev-py2.7.egg/pymodelfit/core.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1174" column="36" selection-start="44297" selection-end="44297" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1369870889529" expanded="true" signature="1396:1471" placeholder="..." />
-                <marker date="1369870889529" expanded="true" signature="147392:148132" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -152,6 +184,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -172,18 +205,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -315,12 +347,12 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.70198673" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13660619" sideWeight="0.69866073" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13820705" sideWeight="0.34151787" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13820705" sideWeight="0.38950893" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39514348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3013393" sideWeight="0.50053364" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29910713" sideWeight="0.49573106" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2611607" sideWeight="0.49573106" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -387,56 +419,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site-packages/PyModelFit-0.2dev-py2.7.egg/pymodelfit/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1174" column="36" selection-start="44297" selection-end="44297" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1369870889529" expanded="true" signature="1396:1471" placeholder="..." />
-            <marker date="1369870889529" expanded="true" signature="147392:148132" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pymc-2.2-py2.7-win-amd64.egg/pymc/NormalApproximation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="313" column="83" selection-start="10506" selection-end="10506" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="21" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PyTrA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="25" selection-start="11251" selection-end="11251" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1407#1604#0" expanded="false" />
-            <element signature="e#1651#1968#0" expanded="false" />
-            <element signature="e#2015#2470#0" expanded="false" />
-            <element signature="e#2517#3101#0" expanded="false" />
-            <element signature="e#3140#3263#0" expanded="false" />
-            <element signature="e#3302#3537#0" expanded="false" />
-            <element signature="e#3576#3915#0" expanded="false" />
-            <element signature="e#3954#4395#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1102" column="0" selection-start="46492" selection-end="46492" vertical-scroll-proportion="0.26027396" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/matplotlib/axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8366" column="75" selection-start="295264" selection-end="295264" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/pymc-2.2-py2.7-win-amd64.egg/pymc/Matplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="548" column="3" selection-start="16982" selection-end="16982" vertical-scroll-proportion="0.0" />
@@ -505,18 +487,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/traits/trait_handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="0" selection-start="6154" selection-end="6154" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Standard_Editors/CheckListEditor_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="41" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Standard_Editors/ListEditor_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="23" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Dynamic_Forms/dynamic_range_editor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="61" selection-start="2838" selection-end="2842" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Standard_Editors/RangeEditor_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="42" selection-start="894" selection-end="894" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Examples/traitsui-4.1.0/demo/Useful/using_springs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="17" selection-start="2304" selection-end="2304" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#685#725#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PyTrA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="25" selection-start="11419" selection-end="11419" vertical-scroll-proportion="0.33409873">
+        <state line="319" column="31" selection-start="12622" selection-end="12622" vertical-scroll-proportion="0.37362638">
           <folding>
-            <element signature="e#1407#1604#0" expanded="false" />
-            <element signature="e#1651#1968#0" expanded="false" />
-            <element signature="e#2015#2470#0" expanded="false" />
-            <element signature="e#2517#3101#0" expanded="false" />
-            <element signature="e#3140#3263#0" expanded="false" />
-            <element signature="e#3302#3537#0" expanded="false" />
-            <element signature="e#3576#3915#0" expanded="false" />
-            <element signature="e#3954#4395#0" expanded="false" />
+            <element signature="e#151#169#0" expanded="true" />
+            <element signature="e#2040#2495#0" expanded="false" />
+            <element signature="e#2542#3126#0" expanded="false" />
+            <element signature="e#3165#3288#0" expanded="false" />
+            <element signature="e#3327#3562#0" expanded="false" />
+            <element signature="e#3601#3940#0" expanded="false" />
+            <element signature="e#3979#4420#0" expanded="false" />
           </folding>
         </state>
       </provider>

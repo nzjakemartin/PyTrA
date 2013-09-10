@@ -12,9 +12,9 @@ from numpy import genfromtxt
 from pylab import ginput
 from scipy import interpolate, special, linalg
 from matplotlib.pyplot import figure, contourf, title, xlabel, ylabel, show, close, xlim, ylim, subplot, semilogy, gca, colorbar, cm, legend, plot, subplots_adjust
-from traits.api import  HasTraits, File, Button, Array, Instance, Str, Int, Float, Range
+from traits.api import  HasTraits, File, Button, Array, Instance, Str, Int, Float, Bool
 from traitsui.menu import Action, Menu,MenuBar
-from traitsui.api import Group, Item, View, Label, HSplit, Tabbed, VSplit
+from traitsui.api import Group, Item, View, Label, HSplit, Tabbed, VSplit, RangeEditor, ValueEditor
 from chaco.api import ArrayPlotData, Plot, jet
 from chaco.tools.api import PanTool, ZoomTool
 from tvtk.pyface.scene_editor import SceneEditor
@@ -134,6 +134,14 @@ class OhioLoader(HasTraits):
 		Data.time_C = Data.time
 		Data.wavelength_C = Data.wavelength
 
+class Dataviewer(HasTraits):
+	data = Data
+
+	view = View(
+		Item('data',show_label=False,editor=ValueEditor()),
+		resizable=True
+	)
+
 class MainWindow(HasTraits):
 	'''
 	Main window for PyTrA sets up the view objects and views the different methods that can be applied to the data
@@ -143,12 +151,19 @@ class MainWindow(HasTraits):
 
 	scene = Instance(MlabSceneModel, ())
 	plot2D = Instance(Plot)
-	plotwaveindexshow = Float(0)
-	plotwaveindex = Range(0,1000)
-	plottimeindexshow = Float(0)
-	plottimeindex = Range(0,1000)
+	plotwaveindexshow = Float
+	plotwaveindex = Float
+	wavelow=Float(0)
+	wavehigh=Float(100)
+	waverange=int(100)
+	plottimeindexshow = Float
+	plottimeindex = Float
+	timelow=Float(-1.0)
+	timehigh=Float(100.0)
+	timerange=int(100)
 	plottime = Instance(Plot)
 	updateplots = Button('Reset plots')
+	zoom_on = Bool(False)
 	plotwavelength = Instance(Plot)
 	plot2Db = Button("plot")
 	TrA_Raw_file = File("TrA data")
@@ -188,6 +203,7 @@ class MainWindow(HasTraits):
 	Save_log = Button("Save log file")
 	Help = Button("Help")
 	log = Str("PyTrA:Python based fitting of Ultra-fast Transient Absorption Data")
+	showdata=Button("Show python data")
 
 	#--Setting up views in TraitsUI--#
 
@@ -207,23 +223,26 @@ class MainWindow(HasTraits):
 	plot_group = Group(
 		HSplit(
 		VSplit(
-		(
-		Label('Hold Ctrl to zoom in plots'),
-		Item('plot2D', editor=ComponentEditor(), show_label=False),
-		(
-		HSplit(Item('updateplots', show_label=False),Item('Plot_2D', show_label=False),Item('multiple_plots', show_label=False),Item('Normalise', show_label=False),Item('SVD', show_label=False),Item('EFA', show_label=False)) )
-		),
-		(Item('log',style='custom',show_label=False),
-		HSplit(Item('Save_log', show_label=False)))
+			(
+			Label('Hold Ctrl to zoom in plots'),
+			Item('plot2D', editor=ComponentEditor(), show_label=False),
+			(HSplit(Item('updateplots', show_label=False),Item('zoom_on'),Item('Plot_2D', show_label=False),Item('multiple_plots', show_label=False),Item('Normalise', show_label=False),Item('SVD', show_label=False),Item('EFA', show_label=False))
+			)
+			),
+			(Item('log',style='custom',show_label=False),
+			HSplit(Item('Save_log', show_label=False))),
 		),
 		VSplit(
-		(Item('plottime', editor=ComponentEditor(), show_label=False),
-		(HSplit(Item('plotwaveindexshow', show_label=False, style='readonly'),Item('Kinetic_Trace', show_label=False),Item('Fit_Trace', show_label=False),Item('mcmc',show_label=False),Item('DeleteTraces_1', show_label=False))),
-		Item('plotwaveindex', show_label=False)
-		),
-		(Item('plotwavelength', editor=ComponentEditor(), show_label=False),
-		(HSplit(Item('plottimeindexshow', show_label=False, style='readonly'),Item('Spectra', show_label=False),Item('Fit_Spec', show_label=False),Item('DeleteSpectra_1', show_label=False))),
-		Item('plottimeindex', show_label=False)),
+			(
+			Item('plottime', editor=ComponentEditor(), show_label=False),
+			(HSplit(Item('Kinetic_Trace', show_label=False),Item('Fit_Trace', show_label=False),Item('mcmc',show_label=False),Item('DeleteTraces_1', show_label=False),Item('plotwaveindexshow', show_label=False, style='readonly'))),
+			Item('plotwaveindex', show_label=False, editor=RangeEditor(low_name='wavelow',high_name='wavehigh',format='%6f',label_width=waverange,mode='slider'))
+			),
+			(
+			Item('plotwavelength', editor=ComponentEditor(), show_label=False),
+			(HSplit(Item('Spectra', show_label=False),Item('Fit_Spec', show_label=False),Item('DeleteSpectra_1', show_label=False),Item('plottimeindexshow',show_label=False,style='readonly'))),
+			Item('plottimeindex', show_label=False, editor=RangeEditor(low_name='timelow',high_name='timehigh',format='%d',label_width=timerange,mode='slider'))
+			),
 		),
 		),
 		label='2D plot'
@@ -247,6 +266,7 @@ class MainWindow(HasTraits):
 						Action(name="Save as Glotaran",action="_Save_Glo_fired"),
 						Action(name="Delete multple traces",action="_DeleteTraces_fired"),
 						Action(name="Delete multple spectra",action="_Delete_spectra_fired"),
+						Action(name="Show python data",action='_showdata_fired'),
 						name="File"),
 						Menu(
 						Action(name="Plot chirp",action='_PlotChirp_fired'),
@@ -281,34 +301,41 @@ class MainWindow(HasTraits):
 		ds.set_data('img',Data.TrA_Data)
 
 		img = Plot(ds)
-		cmapImgPlot = img.img_plot("img",colormap=jet,x=Data.wavelength,y=Data.time)
+		cmapImgPlot = img.img_plot("img",colormap=jet,xbounds=(Data.wavelength[0],Data.wavelength[-1]),ybounds=(0,(len(Data.time)-1)))
 
 		self.plot2D = img
 
 		self.plot2D.x_axis.title="Wavelength (nm)"
-		self.plot2D.y_axis.title="time (ps)"
+		self.plot2D.y_axis.title="Samples"
 
-		zoom = ZoomTool(component=img, tool_mode="box", always_on=False)
-		img.overlays.append(zoom)
+		if self.zoom_on==True:
+			zoom = ZoomTool(component=img, tool_mode="box", always_on=True)
+			img.overlays.append(zoom)
+
 		img.tools.append(PanTool(img))
 
 		self._plottimeindex_changed()
 		self._plotwaveindex_changed()
 
+	def _zoom_on_changed(self):
+		self._updateplots_fired()
+
 	def _updateplots_fired(self):
 		#Don't regrid just reset 2D and 1D graphs
 		ds = ArrayPlotData()
-		ds.set_data('img',Data.TrA_Data_gridded)
+		ds.set_data('img',Data.TrA_Data)
 
 		img = Plot(ds)
-		cmapImgPlot = img.img_plot("img",colormap=jet,xbounds=(Data.wavelength[0],Data.wavelength[-1]),ybounds=(Data.time[0],Data.time[-1]))
+		cmapImgPlot = img.img_plot("img",colormap=jet,xbounds=(Data.wavelength[0],Data.wavelength[-1]),ybounds=(0,(len(Data.time)-1)))
 		self.plot2D = img
 
 		self.plot2D.x_axis.title="Wavelength (nm)"
-		self.plot2D.y_axis.title="time (ps)"
+		self.plot2D.y_axis.title="Samples"
 
-		zoom = ZoomTool(component=img, tool_mode="box", always_on=False)
-		img.overlays.append(zoom)
+		if self.zoom_on==True:
+			zoom = ZoomTool(component=img, tool_mode="box", always_on=True)
+			img.overlays.append(zoom)
+
 		img.tools.append(PanTool(img))
 
 		self._plottimeindex_changed()
@@ -318,7 +345,7 @@ class MainWindow(HasTraits):
 		'''
 		Plotting the 1D spectra chaco plot
 		'''
-		index_time_left=(abs(Data.time-float(self.plottimeindex))).argmin()
+		index_time_left=self.plottimeindex
 
 		self.plottimeindexshow = Data.time[index_time_left]
 
@@ -326,8 +353,10 @@ class MainWindow(HasTraits):
 		plot = Plot(dw)
 		plot.plot(("x","y"), line_width=1)
 
-		zoom = ZoomTool(component=plot, tool_mode="box", always_on=False)
-		plot.overlays.append(zoom)
+		if self.zoom_on==True:
+			zoom = ZoomTool(component=img, tool_mode="box", always_on=True)
+			img.overlays.append(zoom)
+
 		plot.tools.append(PanTool(plot))
 
 		self.plotwavelength = plot
@@ -347,8 +376,10 @@ class MainWindow(HasTraits):
 		plot = Plot(dt)
 		plot.plot(("x","y"), line_width=1)
 
-		zoom = ZoomTool(component=plot, tool_mode="box", always_on=False)
-		plot.overlays.append(zoom)
+		if self.zoom_on==True:
+			zoom = ZoomTool(component=img, tool_mode="box", always_on=True)
+			img.overlays.append(zoom)
+
 		plot.tools.append(PanTool(plot))
 
 		self.plottime = plot
@@ -397,7 +428,14 @@ class MainWindow(HasTraits):
 		indst = Data.time.argsort()
 		Data.TrA_Data = Data.TrA_Data[indst,:]
 		Data.time = Data.time[indst]
+		self.timelist = Data.time.tolist()
 
+		self.wavelow = float(Data.wavelength[0])
+		self.wavehigh = float(Data.wavelength[-1])
+		self.waverange = len(Data.wavelength)
+		self.timelow = int(0)
+		self.timehigh = len(Data.time)-1
+		self.timerange = len(Data.time)
 		self.plottimeindex = float(Data.time[0])
 		self.plotwaveindex = float(Data.wavelength[0])
 
@@ -422,11 +460,13 @@ class MainWindow(HasTraits):
 		except:
 			self.log=("%s\nNo Chirp found"%(self.log))
 
-
 		# Update chaco plot
 		self._plot2Db_fired()
 
 		self.log=("%s\nData file imported of size t=%s and wavelength=%s name=%s" %(self.log,Data.TrA_Data.shape[0],Data.TrA_Data.shape[1],TrA_Raw_name))
+
+	def _showdata_fired(self):
+		Dataviewer().edit_traits()
 
 	def _open_csv_fired(self):
 		'''
@@ -475,6 +515,10 @@ class MainWindow(HasTraits):
 		Data.TrA_Data = delete(Data.TrA_Data,arange(index_wavelength_left,index_wavelength_right,1),1)
 		Data.wavelength = delete(Data.wavelength,arange(index_wavelength_left,index_wavelength_right,1))
 
+		self.wavelow = float(Data.wavelength[0])
+		self.wavehigh = float(Data.wavelength[-1])
+		self.waverange = len(Data.wavelength)
+
 		# Update chaco plot
 		self._plot2Db_fired()
 
@@ -499,6 +543,10 @@ class MainWindow(HasTraits):
 		Data.TrA_Data = delete(Data.TrA_Data,arange(index_time_top,index_time_bottom,1),0)
 		Data.time = delete(Data.time,arange(index_time_top,index_time_bottom,1))
 
+		self.timelow = float(0)
+		self.timehigh = len(Data.time)-1
+		self.timerange = len(Data.time)
+
 		# Update chaco plot
 		self._plot2Db_fired()
 
@@ -509,11 +557,15 @@ class MainWindow(HasTraits):
 		Delete single spectrum
 		'''
 
-		index_time_left=(abs(Data.time-float(self.plottimeindex))).argmin()
+		index_time_left=self.plottimeindex
 		time_val = Data.time[index_time_left]
 
 		Data.TrA_Data = delete(Data.TrA_Data,index_time_left,0)
 		Data.time = delete(Data.time,index_time_left)
+
+		self.timelow = float(0)
+		self.timehigh = len(Data.time)-1
+		self.timerange = len(Data.time)
 
 		# Update chaco plot
 		self._plot2Db_fired()
@@ -531,6 +583,10 @@ class MainWindow(HasTraits):
 
 		Data.TrA_Data = delete(Data.TrA_Data,index_wave_left,1)
 		Data.wavelength = delete(Data.wavelength,index_wave_left)
+
+		self.wavelow = float(Data.wavelength[0])
+		self.wavehigh = float(Data.wavelength[-1])
+		self.waverange = len(Data.wavelength)
 
 		# Update chaco plot
 		self._plot2Db_fired()
@@ -616,7 +672,7 @@ class MainWindow(HasTraits):
 
 	def _Fit_Spec_fired(self):
 
-		index_time=(abs(Data.time-self.plottimeindex)).argmin()
+		index_time=self.plottimeindex
 		Data.tracefitmodel = fitgui.fit_data(Data.wavelength,Data.TrA_Data[index_time,:],autoupdate=False,model=Gauss_1)
 
 		results_error = Data.tracefitmodel.getCov().diagonal()
@@ -888,7 +944,7 @@ class MainWindow(HasTraits):
 
 	def _Spectra_fired(self):
 
-		index_time=(abs(Data.time-float(self.plottimeindex))).argmin()
+		index_time=self.plottimeindex
 
 		figure()
 		plot(Data.wavelength, Data.TrA_Data[index_time,:] )
